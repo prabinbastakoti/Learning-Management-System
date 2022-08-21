@@ -1,21 +1,26 @@
 
-from logging import PlaceHolder
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, DateField, DateTimeField 
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username',
+    firstname = StringField('First Name',
                             validators=[DataRequired(),Length(min=2,max=20)])
-    email = StringField('Email',
+    lastname = StringField('Last Name',
+                            validators=[DataRequired(),Length(min=2,max=20)])
+
+    email = StringField('Email Address',
                         validators= [DataRequired(), Email()])
 
+    phonenumber= StringField('Phone Number', validators=[DataRequired(), Length(10)])
+
     password = PasswordField('Password',validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
+
+    confirmpassword = PasswordField('Confirm Password',
                                     validators=[DataRequired(),EqualTo('password')])
 
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('Submit')
 
 
 
