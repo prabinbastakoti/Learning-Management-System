@@ -1,10 +1,8 @@
- 
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import LoginForm, RegistrationForm
+from flask import render_template, url_for, flash, redirect
+from lmsproject import app
+from lmsproject.forms import LoginForm, RegistrationForm
+from lmsproject.models import User
 
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'afaf8a7f6a76f9af7afbjkaf'
 
 @app.route('/')
 @app.route('/home')
@@ -25,9 +23,10 @@ def login():
             return redirect(url_for('home'))
         else:
             flash("The email you entered isn't connected to an account.",'danger')
+          # return redirect(url_for('home')) To redirect to home if login failed
+
     form.email.data=''
     return render_template('login.html', form = form)
-
 
 @app.route('/signup',methods=['GET','POST'])
 def signup():
@@ -40,8 +39,3 @@ def signup():
     form.email.data=''
     form.phonenumber.data=''
     return render_template('signup.html',form = form)
-
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
