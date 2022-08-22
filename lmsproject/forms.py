@@ -1,8 +1,8 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
-
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from lmsproject.models import User
 
 class RegistrationForm(FlaskForm):
     firstname = StringField('First Name',
@@ -21,6 +21,16 @@ class RegistrationForm(FlaskForm):
                                     validators=[DataRequired(),EqualTo('password')])
 
     submit = SubmitField('Submit')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email = email.data).first()
+        if user:
+            raise ValidationError('That email is taken. Please choose a different one.')
+
+    def validate_phonenumber(self, phonenumber):
+        user = User.query.filter_by(phonenumber = phonenumber.data).first()
+        if user:
+            raise ValidationError('That phonenumber is taken. Please choose a different one.')
 
 
 
