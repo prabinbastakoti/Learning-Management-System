@@ -37,7 +37,7 @@
 
 
   <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
-
+<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/graduation-cap.png') }}">
 
 </head>
 
@@ -58,14 +58,25 @@
           </button>
           
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if current_user.is_authenticated %} 
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                 <div class="hero_btn-continer">
-            <a href="{{ url_for('login') }}" class="call_to-btn btn_white-border">
-              Login
+                <div class="hero_btn-continer">
+            <a href="{{ url_for('logout') }}" class="call_to-btn btn_white-border">
+              Logout
             </a>
-          </div>
+          </div>               
+            {% else %}
+              <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav  ">
+                  <li class="nav-item active">
+                  <div class="hero_btn-continer">
+              <a href="{{ url_for('login') }}" class="call_to-btn btn_white-border">
+                Login
+              </a>
+            </div>
+            {% endif %}
                 </li>
                 
 

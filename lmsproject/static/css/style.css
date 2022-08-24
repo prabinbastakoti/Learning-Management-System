@@ -26,13 +26,41 @@ body {
 .call_to-btn {
   display: inline-block;
   padding: 15px 45px;
+  margin-right: 10px;
+  margin-top: 10px;
   border-radius: 10px;
   font-size: 18px;
   background-color: #08bd80;
   color: #ffffff;
   font-weight: 600;
   transition: all 0.3s ease 0s;
+  text-align: center;
+  width: 280px;
 }
+
+.call_to-btn1 {
+display: inline-grid;
+/* display: table-cell; */
+vertical-align: middle;
+padding: 15px 45px;
+margin-right: 10px;
+margin-top: 10px;
+border-radius: 10px;
+font-size: 18px;
+background-color: #08bd80;
+color: #ffffff;
+font-weight: 600;
+transition: all 0.3s ease 0s;
+text-align: center;
+width: 280px;
+height: 100px;
+justify-items: center;
+justify-content: center;
+align-items: center;
+align-content: center;
+}
+
+
 
 .hero_section .call_to-btn {}
 
@@ -240,10 +268,30 @@ width: 280px;
 
 
 .our-portfolio {
-  padding-top: 100px;
+  padding-top: 60px;
   padding-left: 90px;
+  padding-bottom: 70px;
   margin-top: 0px;
   margin-bottom: 120px;
+}
+
+
+
+.our-portfolio1 {
+    padding-top: 60px;
+    padding-left: 180px;
+    padding-right: 140px;
+    padding-bottom: 70px;
+   
+    margin-top: 0px;
+    margin-bottom: 120px;
+    flex-direction: revert;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    display: -webkit-inline-box;
 }
 .our-portfolio .item:hover .hidden-content {
   top: -100px;
@@ -312,8 +360,10 @@ width: 280px;
 
 
 .goal_section {
-  background: url("file:///D:/project%20learning%20management/fanadesh-html/images/managegoal-test-prep-light-new.svg");
-  color: #000000;
+  background: url(../images/managegoal-test-prep-light-new.svg);
+  
+
+  color: #3c4852;
   font-family: 'Poppins', sans-serif;
   height: 24vh;
 }
@@ -352,6 +402,12 @@ width: 280px;
   background-color:#5a6e7f;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
+}
+.info_section1 {
+  background-color:#5a6e7f;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 50px;
 }
 
 .info_logo-box {

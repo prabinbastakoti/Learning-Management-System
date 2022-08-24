@@ -19,7 +19,7 @@ def about():
 @app.route('/login',methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for("faculty"))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -27,7 +27,7 @@ def login():
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             flash("Login Successful.",'success')
-            return redirect(next_page) if next_page else redirect(url_for('home')) 
+            return redirect(next_page) if next_page else redirect(url_for('faculty')) 
         else:
             flash("Login Unsuccessful. Please check email and password",'danger')
     form.email.data=''    
@@ -52,6 +52,7 @@ def signup():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash('You have been logged out Successfully!','success')
     return redirect(url_for('home'))  
 
 
@@ -60,3 +61,35 @@ def logout():
 @login_required
 def account():
     return render_template('account.html')
+
+@app.route('/elearningunit1')
+@login_required
+def elearningunit1():
+    return render_template('elearningunit1.html')
+
+@app.route('/elearningunit2')
+@login_required
+def elearningunit2():
+    return render_template('elearningunit2.html')
+
+@app.route('/elearning')
+@login_required
+def elearning():
+    return render_template('elearning.html')
+
+@app.route('/faculty')
+@login_required
+def faculty():
+    return render_template('faculty.html')
+
+@app.route('/semester')
+@login_required
+def semester():
+    return render_template('semester.html')
+
+@app.route('/subject')
+@login_required
+def subject():
+    return render_template('subject.html')
+
+
