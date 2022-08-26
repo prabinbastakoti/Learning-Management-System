@@ -11,9 +11,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home():
     return render_template('index.html',title='Home')
 
-@app.route('/about')
-def about():
-    return render_template('about.html', title = 'About')
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -57,10 +54,7 @@ def logout():
 
 
 
-@app.route('/account')
-@login_required
-def account():
-    return render_template('account.html')
+
 
 @app.route('/elearningunit1')
 @login_required
@@ -92,4 +86,7 @@ def semester():
 def subject():
     return render_template('subject.html')
 
-
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>ShikshyaLaya</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css') }}" />
+  <!-- progress barstle -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" />
+  <!-- responsive style -->
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
+   
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
+<link rel="icon" 
+      type="image/png" 
+      href="{{ url_for('static',filename='images/graduation-cap.png') }}">
+
+</head>
+
+<body class="sub_page">
+  <div class="top_container ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{{ url_for('home') }}">
+           
+            <img src="{{ url_for('static',filename='images/logo.png') }}">
+          </a>
+        
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ url_for('home') }}"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#"> About </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="#"> Admission </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Why Us </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact Us</a>
+                </li>
+
+              </ul>
+            </div>
+            </div>
+        </nav>
+      </div>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+  </div>
+  <!-- end header section -->
+
+
+
+  <div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{ url_for('static',filename='images/default.jpg') }}" alt=""/>
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h1>
+                                Prabin Bastakoti
+                            </h1>
+                            <h6>
+                                Tribhuvan University
+                            </h6>
+                            <p class="proile-rating">Roll Number : <span>810</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="">Website Link</a><br/>
+                    <a href="">Bootsnipp Profile</a><br/>
+                    <a href="">Bootply Profile</a>
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br/>
+                    <a href="">Web Developer</a><br/>
+                    <a href="">WordPress</a><br/>
+                    <a href="">WooCommerce</a><br/>
+                    <a href="">PHP, .Net</a><br/>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Prabin Bastakoti</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>prabinbastakoti18@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>123 456 7890</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Birthday</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>
+                                            Vikram
+                                        </p>
+                                    </div>
+                                </div>
+
+                                
+                       <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Gender</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Male</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Addres</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Bharatpur 11, Chitwan</p>
+                                    </div>
+                                </div>
+                    </div>
+
+
+
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Hourly Rate</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>10$/hr</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Total Projects</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>230</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>English Level</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Availability</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>6 months</p>
+                            </div>
+                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Your Bio</label><br/>
+                        <p>Your detail description</p>
+                    </div>
+                </div>
+            </div>
+
+
+                </div>
+            </div>
+        </div>
+    </form>           
+</div>
+</div>
+
+<style>
+.emp-profile{
+    padding: 3%;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #08bd80;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 100%;
+    height: 50%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h1{
+    color: #333;
+}
+.profile-head h6{
+    color: #ffffff;
+    font-size: 23px;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 20px;
+    color: #3C4852;
+    margin-top: 5%;
+    font-weight: 600;
+}
+.proile-rating span{
+    color: #3C4852;
+    font-size: 20px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:0%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+}
+.profile-work
+{
+    margin-top: 0%;
+}
+.profile-work p{
+    font-size: 20px;
+    color: #3C4852;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+    color: #3C4852;
+    font-size: 20px;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+
+
+      <!-- end contact section -->
+      <section class="info_section layout_padding-top">
+        <div class="info_logo-box">
+          <h2>
+              SHIKSHYALAYA
+          </h2>
+        </div>
+          <div class="container layout_padding2">
+            <div class="row">
+              <div class="col-md-3">
+                <h5>
+                    About Us                                                                             
+                </h5>
+               <p>
+                  dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r 
+               </p>
+              </div>
+              <div class="col-md-3">
+                <h5>
+                    Useful Link 
+                </h5>
+                <ul>
+                  <li>
+                    <a href="">
+                        Video games
+                    </a>
+                  </li>
+                  <li>
+                   <a href="">
+                      Remote control
+                   </a>
+                  </li>
+                  <li>
+                    <a href="">
+                        3d controller
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h5>
+                    Contact Us
+                </h5>
+                <p>
+                    dolor sit amet, consectetur magna aliqua. quisdotempor incididunt ut e 
+                </p>
+              </div>
+              <div class="col-md-3">
+           
+                <div class="subscribe_container">
+                  <h5>
+                      Newsletter
+                  </h5>
+                  <div class="form_container">
+                    <form action="">
+                      <input type="email" placeholder="Enter your email">
+                      <button type="submit">
+                        Subscribe
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="container">
+              <div class="social_container">
+                 
+                  <div class="social-box">
+                    <a href="">
+                      <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
+                    </a>
+      
+                    <a href="">
+                      <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
+                    </a>
+                    <a href="">
+                      <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
+                    </a>
+                    <a href="">
+                      <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
+                    </a>
+                  </div>
+                </div>
+          </div>
+        </section>
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2022 All Rights Reserved By
+      <a href="https://html.design/">ShikshyaLaya</a>
+    </p>
+  </section>
+
+  <!-- footer section -->
+
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.4.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+
+
+</body>
+
+</html>

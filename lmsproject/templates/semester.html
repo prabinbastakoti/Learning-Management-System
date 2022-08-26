@@ -66,7 +66,7 @@
                   <a class="nav-link" href="{{ url_for('home') }}"> Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ url_for('about') }}"> About </a>
+                  <a class="nav-link" href="#"> About </a>
                 </li>
 
                 <li class="nav-item ">
@@ -86,6 +86,15 @@
         </nav>
       </div>
     </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
   </div>
   <!-- end header section -->
 
@@ -101,27 +110,27 @@
   <div id="portfolio" class="our-portfolio1 section">
 
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       First Semester
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       Second Semester
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       Third Semester
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       Fourth Semester
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       Fifth Semester
     </a>
   </div>
@@ -131,12 +140,12 @@
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       Seventh Semester
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('home') }}" class="call_to-btn btn_white-border">
+    <a href="#" class="call_to-btn btn_white-border">
       Eighth Semester
     </a>
   </div>

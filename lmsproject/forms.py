@@ -25,12 +25,12 @@ class RegistrationForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email = email.data).first()
         if user:
-            raise ValidationError('That email is taken. Please choose a different one.')
+            raise ValidationError('Email is already used.')
 
     def validate_phonenumber(self, phonenumber):
         user = User.query.filter_by(phonenumber = phonenumber.data).first()
         if user:
-            raise ValidationError('That phonenumber is taken. Please choose a different one.')
+            raise ValidationError('Phonenumber is already used.')
 
 
 

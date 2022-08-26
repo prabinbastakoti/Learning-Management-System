@@ -63,10 +63,10 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html{{ url_for('home') }}"> Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{{ url_for('home') }}"> Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="about.html{{ url_for('about') }}"> About </a>
+                  <a class="nav-link" href="#"> About </a>
                 </li>
 
                 <li class="nav-item ">
@@ -330,17 +330,17 @@
                  
                   <div class="social-box">
                     <a href="">
-                      <img src="images/fb.png" alt="">
+                      <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
                     </a>
       
                     <a href="">
-                      <img src="images/twitter.png" alt="">
+                      <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
                     </a>
                     <a href="">
-                      <img src="images/linkedin.png" alt="">
+                      <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
                     </a>
                     <a href="">
-                      <img src="images/instagram.png" alt="">
+                      <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
                     </a>
                   </div>
                 </div>
@@ -351,14 +351,14 @@
   <section class="container-fluid footer_section">
     <p>
       Copyright &copy; 2022 All Rights Reserved By
-      <a href="https://html.design/">ShikshyaLaya</a>
+      <a href="">ShikshyaLaya</a>
     </p>
   </section>
 
   <!-- footer section -->
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.4.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
 
 
 </body>

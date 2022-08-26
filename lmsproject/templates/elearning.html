@@ -68,19 +68,19 @@
                   <a class="nav-link" href="{{ url_for('home') }}"> Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ url_for('about') }}"> About </a>
+                  <a class="nav-link" href="#"> About </a>
                 </li>
 
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ url_for('home') }}"> Admission </a>
+                  <a class="nav-link" href="#"> Admission </a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('home') }}"> Why Us </a>
+                  <a class="nav-link" href="#"> Why Us </a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('home') }}">Contact Us</a>
+                  <a class="nav-link" href="#">Contact Us</a>
                 </li>
 
               </ul>
@@ -88,6 +88,15 @@
         </nav>
       </div>
     </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
   </div>
   <!-- end header section -->
 
@@ -129,37 +138,37 @@
 
     <div class="hero_btn1-continer">
       <a href="{{ url_for('elearningunit1') }}" class="call_to-btn1 btn_white-border">
-        E-learning - Concept and Charcteristics
+        Unit 1 
       </a>
     </div>
     <div class="hero_btn1-continer">
       <a href="{{ url_for('elearningunit2') }}" class="call_to-btn1 btn_white-border">
-        Learning Management System
+        Unit 2 
       </a>
     </div>
     <div class="hero_btn1-continer">
-      <a href="{{ url_for('login') }}" class="call_to-btn1 btn_white-border">
-        ICT Integrated Lesson
+      <a href="#" class="call_to-btn1 btn_white-border">
+        Unit 3 
       </a>
     </div>
     <div class="hero_btn1-continer">
-      <a href="{{ url_for('elearning') }}" class="call_to-btn1 btn_white-border">
-        ICT in ASSESSMENT
+      <a href="#" class="call_to-btn1 btn_white-border">
+        Unit 4 
       </a>
     </div>
     <div class="hero_btn1-continer">
-      <a href="{{ url_for('login') }}" class="call_to-btn1 btn_white-border">
-       ICT for Educational management
+      <a href="#" class="call_to-btn1 btn_white-border">
+       Unit 5 
       </a>
     </div>
     <div class="hero_btn1-continer">
-        <a href="{{ url_for('login') }}" class="call_to-btn1 btn_white-border">
-         ICT for Teacher Professional Development
+        <a href="#" class="call_to-btn1 btn_white-border">
+         Unit 6 
         </a>
       </div>
       <div class="hero_btn1-continer">
-        <a href="{{ url_for('login') }}" class="call_to-btn1 btn_white-border">
-        E-Content and Open Educational Resoruces 
+        <a href="#" class="call_to-btn1 btn_white-border">
+        Unit 7  
         </a>
       </div>
     
