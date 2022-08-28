@@ -23,10 +23,10 @@ def login():
         if user and bcrypt.check_password_hash(user.password,form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
-            flash("Login Successful.",'success')
+            flash(f"Login Successful. Welcome to Shikshyalaya {current_user.firstname} {current_user.lastname}.",'success')
             return redirect(next_page) if next_page else redirect(url_for('faculty')) 
         else:
-            flash("Login Unsuccessful. Please check email and password",'danger')
+            flash("Credentials do not match our records. Please Try Again.",'danger')
     form.email.data=''    
     return render_template('login.html',form = form)
 
