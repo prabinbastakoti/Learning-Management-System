@@ -115,7 +115,7 @@
             <div class="col-md-6">
                 <div class="profile-head">
                             <h1>
-                                Prabin Bastakoti
+                                {{ current_user.firstname }} {{ current_user.lastname }}
                             </h1>
                             <h6>
                                 Tribhuvan University
@@ -160,7 +160,7 @@
                                         <label>Name</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Prabin Bastakoti</p>
+                                        <p>{{ current_user.firstname }} {{ current_user.lastname }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -168,7 +168,7 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>prabinbastakoti18@gmail.com</p>
+                                        <p>{{ current_user.email }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -176,7 +176,7 @@
                                         <label>Phone</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>123 456 7890</p>
+                                        <p>{{ current_user.phonenumber }}</p>
                                     </div>
                                 </div>
 
@@ -186,7 +186,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p>
-                                            Vikram
+                                            
+                                            {{ current_user.birthday }}
                                         </p>
                                     </div>
                                 </div>
