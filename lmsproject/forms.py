@@ -1,6 +1,6 @@
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from lmsproject.models import User
 
@@ -9,6 +9,8 @@ class RegistrationForm(FlaskForm):
                             validators=[DataRequired(),Length(min=2,max=20)])
     lastname = StringField('Last Name',
                             validators=[DataRequired(),Length(min=2,max=20)])
+
+    birthday =DateField('Birthday',format='%Y-%m-%d',validators=[DataRequired()])
 
     email = StringField('Email Address',
                         validators= [DataRequired(), Email()])

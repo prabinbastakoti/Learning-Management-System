@@ -37,7 +37,8 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Join ShikshyaLaya</h2>
-                    <form method="POST" action="">
+                    <form method="POST" action="" name="myform">
+                        
                         {{ form.hidden_tag() }}
                             
                                 <div class="row row-space">
@@ -45,7 +46,7 @@
                                         <div class="input-group">
                                             <label class="label">
                                                 {{ form.firstname.label(class="form-control-label") }}
-
+                                            </label>
                                                 {% if form.firstname.errors %}
                                                     {{ form.firstname(class="input--style-4 form-control form-control-lg is-invalid") }}
                                                     <div class="invalid-feedback">
@@ -58,7 +59,7 @@
                                                     {{ form.firstname(class="input--style-4 form-control form-control-lg") }}
 
                                                 {% endif %}
-                                            </label>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -66,7 +67,7 @@
                                             <label class="label">
                                         
                                                 {{ form.lastname.label(class="form-control-label") }}
-
+                                            </label>
                                                 {% if form.lastname.errors %}
                                                     {{ form.lastname(class="input--style-4 form-control form-control-lg is-invalid") }}
                                                     <div class="invalid-feedback">
@@ -79,18 +80,17 @@
                                                     {{ form.lastname(class="input--style-4 form-control form-control-lg") }}
 
                                                 {% endif %}
-                                            </label>
+                                            
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group">
-                                            <label class="label">Birthday</label>
-                                            <div class="input-group-icon">
-                                                <input class="input--style-4 js-datepicker" type="text" name="birthday">
-                                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                            </div>
+                                            <label class="label">
+                                                {{ form.birthday.label}}
+                                            </label>
+                                                {{ form.birthday(class='input--style-4 datepicker') }}      
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -156,6 +156,7 @@
                                         <div class="input-group">
                                             <label class="label">
                                                 {{ form.password.label(class="form-control-label") }}
+                                            </label>
                                                 {% if form.password.errors %}
                                                     {{ form.password(class="input--style-4 form-control form-control-lg is-invalid") }}
                                                     <div class="invalid-feedback">
@@ -168,13 +169,14 @@
                                                     {{ form.password(class="input--style-4 form-control form-control-lg") }}
 
                                                 {% endif %}
-                                            </label>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group">
                                             <label class="label">
                                                 {{ form.confirmpassword.label(class="form-control-label") }}
+                                            </label>
                                                 {% if form.confirmpassword.errors %}
                                                     {{ form.confirmpassword(class="input--style-4 form-control form-control-lg is-invalid") }}
                                                     <div class="invalid-feedback">
@@ -187,15 +189,17 @@
                                                     {{ form.confirmpassword(class="input--style-4 form-control form-control-lg") }}
 
                                                 {% endif %}
-                                            </label>
+                                            
                                         </div>
                                     </div>
                                     </div>
                                 
                                 <div class="p-t-15">
-                                    <button class="btn btn--radius-2 btn--blue" type="submit">
-                                        {{ form.submit(class="btn btn--radius-2 btn--blue") }}
-                                    </button>
+                                    <label class="label">
+                                        <button class="btn btn--radius-2 btn--blue" type="submit">
+                                            {{ form.submit(class="btn btn--radius-2 btn--blue") }}
+                                        </button>
+                                    </label>
                                 </div>
                                 <br>
                                 <span class="d-block text-left my-4 text-muted">Already have a account? <a href="{{ url_for('login') }}" class="create an account ">Login</a></span> 
