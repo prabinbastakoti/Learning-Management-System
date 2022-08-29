@@ -93,6 +93,15 @@
         </nav>
       </div>
     </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
   </div>
   <!-- end header section -->
 
@@ -535,7 +544,7 @@
   <section class="container-fluid footer_section">
     <p>
       Copyright &copy; 2022 All Rights Reserved By
-      <a href="https://html.design/">ShikshyaLaya</a>
+      <a href="">ShikshyaLaya</a>
     </p>
   </section>
 
