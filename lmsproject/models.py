@@ -13,7 +13,13 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20),nullable=False,default= 'default.jpg')
     phonenumber = db.Column(db.Integer,unique=True,nullable=False)
     password = db.Column(db.String(60),nullable= False)
-    birthday = db.Column(db.String(20),nullable=False)
+    birthdate = db.Column(db.String(20),nullable=False)
+    gender = db.Column(db.String(20),nullable=False)
+    address = db.Column(db.String(30),nullable=False)
+    university = db.Column(db.String(50),nullable=False)
+    college = db.Column(db.String(50),nullable=False)
+    regnum = db.Column(db.String(20),nullable=True)
+
     
     def __repr__(self):
         return f"User('{self.firstname}','{self.lastname}','{self.email}','{self.image_file}')"

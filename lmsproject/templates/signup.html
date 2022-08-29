@@ -37,174 +37,250 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Join ShikshyaLaya</h2>
-                    <form method="POST" action="" name="myform">
-                        
+                    <form method="POST" action="">
                         {{ form.hidden_tag() }}
-                            
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">
-                                                {{ form.firstname.label(class="form-control-label") }}
-                                            </label>
-                                                {% if form.firstname.errors %}
-                                                    {{ form.firstname(class="input--style-4 form-control form-control-lg is-invalid") }}
-                                                    <div class="invalid-feedback">
-                                                        {% for error in form.firstname.errors %}
-                                                            <span>{{ error }}</span>
-                                                        {% endfor %}
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.firstname.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.firstname.errors %}
+                                                {{ form.firstname(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.firstname.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
 
-                                                    </div>
-                                                {% else %}
-                                                    {{ form.firstname(class="input--style-4 form-control form-control-lg") }}
+                                                </div>
+                                            {% else %}
+                                                {{ form.firstname(class="input--style-4 form-control form-control-lg") }}
 
-                                                {% endif %}
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">
+                                            {% endif %}
                                         
-                                                {{ form.lastname.label(class="form-control-label") }}
-                                            </label>
-                                                {% if form.lastname.errors %}
-                                                    {{ form.lastname(class="input--style-4 form-control form-control-lg is-invalid") }}
-                                                    <div class="invalid-feedback">
-                                                        {% for error in form.lastname.errors %}
-                                                            <span>{{ error }}</span>
-                                                        {% endfor %}
-
-                                                    </div>
-                                                {% else %}
-                                                    {{ form.lastname(class="input--style-4 form-control form-control-lg") }}
-
-                                                {% endif %}
-                                            
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">
-                                                {{ form.birthday.label}}
-                                            </label>
-                                                {{ form.birthday(class='input--style-4 datepicker') }}      
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">Gender</label>
-                                            <div class="p-t-10">
-                                                <label class="radio-container m-r-45">Male
-                                                    <input type="radio" checked="checked" name="gender">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-container">Female
-                                                    <input type="radio" name="gender">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                    
+                                            {{ form.lastname.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.lastname.errors %}
+                                                {{ form.lastname(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.lastname.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+
+                                                </div>
+                                            {% else %}
+                                                {{ form.lastname(class="input--style-4 form-control form-control-lg") }}
+
+                                            {% endif %}
+                                        
                                     </div>
                                 </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="form-group input-group">
-                                            <label class="label">
-                                                    {{ form.email.label(class="form-control-label") }}
-                                            </label>
-                                                {% if form.email.errors %}
-                                                    {{ form.email(class="input--style-4 form-control form-control-lg is-invalid") }}
-                                                    <div class="invalid-feedback">
-                                                        {% for error in form.email.errors %}
-                                                            <span>{{ error }}</span>
-                                                        {% endfor %}
-
-                                                    </div>
-                                                {% else %}
-                                                    {{ form.email(class="input--style-4 form-control form-control-lg") }}
-
-                                                {% endif %}
-                                            
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">
-                                                {{ form.phonenumber.label(class="form-control-label") }}
-                                            </label>
-                                                {% if form.phonenumber.errors %}
-                                                    {{ form.phonenumber(class="input--style-4 form-control form-control-lg is-invalid") }}
-                                                    <div class="invalid-feedback">
-                                                        {% for error in form.phonenumber.errors %}
-                                                            <span>{{ error }}</span>
-                                                        {% endfor %}
-                                                    </div>
-                                                {% else %}
-                                                    {{ form.phonenumber(class="input--style-4 form-control form-control-lg") }}
-                                                {% endif %}
-                                            
-                                        </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.birthdate.label}}
+                                        </label>
+                                            {{ form.birthdate(class='input--style-4 datepicker') }}      
                                     </div>
                                 </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">
-                                                {{ form.password.label(class="form-control-label") }}
-                                            </label>
-                                                {% if form.password.errors %}
-                                                    {{ form.password(class="input--style-4 form-control form-control-lg is-invalid") }}
-                                                    <div class="invalid-feedback">
-                                                        {% for error in form.password.errors %}
-                                                            <span>{{ error }}</span>
-                                                        {% endfor %}
-
-                                                    </div>
-                                                {% else %}
-                                                    {{ form.password(class="input--style-4 form-control form-control-lg") }}
-
-                                                {% endif %}
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">
-                                                {{ form.confirmpassword.label(class="form-control-label") }}
-                                            </label>
-                                                {% if form.confirmpassword.errors %}
-                                                    {{ form.confirmpassword(class="input--style-4 form-control form-control-lg is-invalid") }}
-                                                    <div class="invalid-feedback">
-                                                        {% for error in form.confirmpassword.errors %}
-                                                            <span>{{ error }}</span>
-                                                        {% endfor %}
-
-                                                    </div>
-                                                {% else %}
-                                                    {{ form.confirmpassword(class="input--style-4 form-control form-control-lg") }}
-
-                                                {% endif %}
-                                            
-                                        </div>
-                                    </div>
-                                    </div>
                                 
-                                <div class="p-t-15">
-                                    <label class="label">
-                                        <button class="btn btn--radius-2 btn--blue" type="submit">
-                                            {{ form.submit(class="btn btn--radius-2 btn--blue") }}
-                                        </button>
-                                    </label>
+                                
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">{{ form.gender.label }}</label>
+                                        <div class="p-t-10">
+                                            {% for subfield in form.gender %}
+                                                <label class="radio-container m-r-45">
+                                                    <tr>
+                                                        <td>{{ subfield }}</td>
+                                                        <td>{{ subfield.label }}</td>
+                                                    </tr>
+                                                    <input type="radio">
+                                                    <span class="checkmark"></span>
+                                                    
+                                                </label>
+                                                <br><br>
+                                            {% endfor %}                                                       
+                                
+                                        </div>
+                                    </div>
                                 </div>
-                                <br>
-                                <span class="d-block text-left my-4 text-muted">Already have a account? <a href="{{ url_for('login') }}" class="create an account ">Login</a></span> 
+                            </div>
+
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="form-group input-group">
+                                        <label class="label">
+                                                {{ form.email.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.email.errors %}
+                                                {{ form.email(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.email.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+
+                                                </div>
+                                            {% else %}
+                                                {{ form.email(class="input--style-4 form-control form-control-lg") }}
+
+                                            {% endif %}
+                                        
+                                        
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.phonenumber.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.phonenumber.errors %}
+                                                {{ form.phonenumber(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.phonenumber.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.phonenumber(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.address.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.address.errors %}
+                                                {{ form.address(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.address.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.address(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.university.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.university.errors %}
+                                                {{ form.university(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.university.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.university(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.college.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.college.errors %}
+                                                {{ form.college(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.college.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.college(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.regnum.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.regnum.errors %}
+                                                {{ form.regnum(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.regnum.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.regnum(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.password.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.password.errors %}
+                                                {{ form.password(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.password.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.password(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">
+                                            {{ form.confirmpassword.label(class="form-control-label") }}
+                                        </label>
+                                            {% if form.confirmpassword.errors %}
+                                                {{ form.confirmpassword(class="input--style-4 form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.confirmpassword.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.confirmpassword(class="input--style-4 form-control form-control-lg") }}
+                                            {% endif %}
+                                        
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="p-t-15">
+                                <label class="label">
+                                    <button>
+                                        {{ form.submit(class="btn btn--radius-2 btn--blue") }}
+                                    </button>
+                                </label>
+                            </div>
                             
-                            
+                            <label class="label">Already have an account?  <a href="{{ url_for('login') }}" class="create an account "> Login here </a></label>
+             
                     </form>
                 </div>
             </div>

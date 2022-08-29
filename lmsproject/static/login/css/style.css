@@ -3,7 +3,7 @@ body {
   background-color: #f8fafb; }
 
 p {
-  color: #b3b3b3;
+  color: #333333;
   font-weight: 600; 
   font-size:20px;
   }
@@ -20,7 +20,15 @@ a {
 
 .content {
   padding: 7rem 0; }
-
+  .title {
+    font-size:1.75rem;
+    color: #08bd80;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+ 
 h2 {
   font-size: 20px; }
 
@@ -55,9 +63,10 @@ h2 {
       border-bottom-right-radius: 7px; }
     .content .contents .form-group label, .content .bg .form-group label {
       font-size: 12px;
+      color: #333333;
       display: block;
       margin-bottom: 0;
-      color: #b3b3b3; }
+      }
     .content .contents .form-group.focus, .content .bg .form-group.focus {
       background: #fff; }
     .content .contents .form-group.field--not-empty label, .content .bg .form-group.field--not-empty label {

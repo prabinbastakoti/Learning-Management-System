@@ -23,6 +23,10 @@ body {
   padding-bottom: 75px;
 }
 
+
+
+
+
 .call_to-btn {
   display: inline-block;
   padding: 15px 45px;
@@ -40,7 +44,6 @@ body {
 
 .call_to-btn1 {
 display: inline-grid;
-/* display: table-cell; */
 vertical-align: middle;
 padding: 15px 45px;
 margin-right: 10px;
@@ -74,6 +77,25 @@ align-content: center;
 }
 
 .call_to-btn:hover,
+.btn_on-hover:hover {
+  -webkit-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.7);
+  transform: translateY(-7px);
+}
+
+.hero_section .call_to-btn1 {}
+
+.call_to-btn1 img {
+  width: 18px;
+  margin-left: 10px;
+}
+
+.btn_on-hover {
+  transition: all 0.3s ease 0s;
+}
+
+.call_to-btn1:hover,
 .btn_on-hover:hover {
   -webkit-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.7);
@@ -309,6 +331,7 @@ width: 280px;
   text-align: left;
   opacity: 0;
   top: 0;
+  background-color: #08bd80;
   visibility: hidden;
   position: absolute;
   z-index: 2;
@@ -321,13 +344,13 @@ width: 280px;
 .our-portfolio .hidden-content h4 {
   font-size: 20px;
   font-weight: 1000;
-  color: #3C4852;
+  color: #ffffff;
   margin-bottom: 20px;
   text-align: left;
 }
 
 .our-portfolio .hidden-content p {
-  color: #3C4852;
+  color: #ffffff;
   margin-bottom: 40px;
   text-align: left;
 }
@@ -348,21 +371,8 @@ width: 280px;
 .our-portfolio .showed-content img {
   max-width: 290px;
 }
-
-
-
-
-
-
-
-
-
-
-
 .goal_section {
   background: url(../images/managegoal-test-prep-light-new.svg);
-  
-
   color: #3c4852;
   font-family: 'Poppins', sans-serif;
   height: 24vh;

@@ -1,7 +1,7 @@
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, RadioField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
 from lmsproject.models import User
 
 class RegistrationForm(FlaskForm):
@@ -10,14 +10,24 @@ class RegistrationForm(FlaskForm):
     lastname = StringField('Last Name',
                             validators=[DataRequired(),Length(min=2,max=20)])
 
-    birthday =DateField('Birthday',format='%Y-%m-%d',validators=[DataRequired()])
+    birthdate =DateField('Birthdate',format='%Y-%m-%d',validators=[DataRequired()])
+
+    gender = RadioField('Gender',validators=[DataRequired()], choices = [('Male','Male'),('Female','Female')],default='Male')
 
     email = StringField('Email Address',
                         validators= [DataRequired(), Email()])
 
     phonenumber= StringField('Phone Number', validators=[DataRequired(), Length(10)])
 
-    password = PasswordField('Password',validators=[DataRequired()])
+    address= StringField('Address', validators=[DataRequired()])
+
+    university= StringField('University Name', validators=[DataRequired()])
+
+    college= StringField('College Name', validators=[DataRequired()])
+
+    regnum= StringField('Regd. No.(Optional)', validators=[Optional()])
+
+    password = PasswordField('Password',validators=[DataRequired(),Length(8)])
 
     confirmpassword = PasswordField('Confirm Password',
                                     validators=[DataRequired(),EqualTo('password')])
