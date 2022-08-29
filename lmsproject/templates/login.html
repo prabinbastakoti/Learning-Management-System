@@ -16,7 +16,13 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ url_for('static',filename='login/css/style.css') }}">
 
-    <title>login</title>
+    {% if title %}
+        <title>{{ title }} - ShikshyaLaya</title>
+    {% else %}
+        <title>ShikshyaLaya</title>
+    {% endif %}
+
+
     <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
     <link rel="icon" 
           type="image/png" 

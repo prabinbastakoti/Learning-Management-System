@@ -28,7 +28,7 @@ def login():
         else:
             flash("Credentials do not match our records. Please Try Again.",'danger')
     form.email.data=''    
-    return render_template('login.html',form = form)
+    return render_template('login.html',form = form,title='Login')
 
 
 @app.route('/signup',methods=['GET','POST'])
@@ -45,7 +45,7 @@ def signup():
         db.session.commit()
         flash('Your account has been created! You are now able to log in','success')
         return redirect(url_for('login'))
-    return render_template('signup.html',form = form)
+    return render_template('signup.html',form = form,title='SignUP')
 
 @app.route('/logout')
 def logout():
@@ -60,34 +60,34 @@ def logout():
 @app.route('/elearningunit1')
 @login_required
 def elearningunit1():
-    return render_template('elearningunit1.html')
+    return render_template('elearningunit1.html',title='E-learning Unit1')
 
 @app.route('/elearningunit2')
 @login_required
 def elearningunit2():
-    return render_template('elearningunit2.html')
+    return render_template('elearningunit2.html',title='E-learning Unit2')
 
 @app.route('/elearning')
 @login_required
 def elearning():
-    return render_template('elearning.html')
+    return render_template('elearning.html',title='E-learning')
 
 @app.route('/faculty')
 @login_required
 def faculty():
-    return render_template('faculty.html')
+    return render_template('faculty.html',title='Faculty')
 
 @app.route('/semester')
 @login_required
 def semester():
-    return render_template('semester.html')
+    return render_template('semester.html',title='Semester')
 
 @app.route('/subject')
 @login_required
 def subject():
-    return render_template('subject.html')
+    return render_template('subject.html',title='Subject')
 
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    return render_template('profile.html',title='Profile')

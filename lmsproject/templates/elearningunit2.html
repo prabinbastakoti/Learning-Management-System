@@ -12,7 +12,11 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>ShikshyaLaya</title>
+  {% if title %}
+    <title>{{ title }} - ShikshyaLaya</title>
+  {% else %}
+    <title>ShikshyaLaya</title>
+  {% endif %}
 
 
 

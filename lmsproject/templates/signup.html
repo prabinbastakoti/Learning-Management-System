@@ -10,7 +10,11 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>SignUp</title>
+    {% if title %}
+        <title>{{ title }} - ShikshyaLaya</title>
+    {% else %}
+        <title>ShikshyaLaya</title>
+    {% endif %}
 
     <!-- Icons font CSS-->
     <link href="{{ url_for('static',filename='signup/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
