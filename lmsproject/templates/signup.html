@@ -48,7 +48,7 @@
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.firstname.label(class="form-control-label") }}
                                         </label>
                                             {% if form.firstname.errors %}
@@ -63,12 +63,18 @@
                                                 {{ form.firstname(class="input--style-4 form-control form-control-lg") }}
 
                                             {% endif %}
+                                        <style>
+                                            .required:after {
+                                                content:" *";
+                                                color: red;
+                                            }
+                                        </style>
                                         
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                     
                                             {{ form.lastname.label(class="form-control-label") }}
                                         </label>
@@ -84,24 +90,35 @@
                                                 {{ form.lastname(class="input--style-4 form-control form-control-lg") }}
 
                                             {% endif %}
-                                        
+                                        <style>
+                                            .required:after {
+                                                content:" *";
+                                                color: red;
+                                            }
+                                        </style>
                                     </div>
                                 </div>
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.birthdate.label}}
                                         </label>
-                                            {{ form.birthdate(class='input--style-4 datepicker') }}      
+                                            {{ form.birthdate(class='input--style-4 datepicker') }}   
+                                        <style>
+                                            .required:after {
+                                                content:" *";
+                                                color: red;
+                                            }
+                                        </style>   
                                     </div>
                                 </div>
                                 
                                 
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">{{ form.gender.label }}</label>
+                                        <label class="label required">{{ form.gender.label }}</label>
                                         <div class="p-t-10">
                                             <div class="row row-space">
                                                 {% for subfield in form.gender %}
@@ -115,7 +132,13 @@
                                                         
                                                     </label>
                                                     
-                                                {% endfor %}                                                       
+                                                {% endfor %}  
+                                                <style>
+                                                    .required:after {
+                                                        content:" *";
+                                                        color: red;
+                                                    }
+                                                </style>                                                     
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +148,7 @@
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="form-group input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                                 {{ form.email.label(class="form-control-label") }}
                                         </label>
                                             {% if form.email.errors %}
@@ -140,14 +163,19 @@
                                                 {{ form.email(class="input--style-4 form-control form-control-lg") }}
 
                                             {% endif %}
-                                        
+                                            <style>
+                                                .required:after {
+                                                    content:" *";
+                                                    color: red;
+                                                }
+                                            </style>
                                         
                                         
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.phonenumber.label(class="form-control-label") }}
                                         </label>
                                             {% if form.phonenumber.errors %}
@@ -160,14 +188,19 @@
                                             {% else %}
                                                 {{ form.phonenumber(class="input--style-4 form-control form-control-lg") }}
                                             {% endif %}
-                                        
+                                            <style>
+                                                .required:after {
+                                                    content:" *";
+                                                    color: red;
+                                                }
+                                            </style>
                                     </div>
                                 </div>
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.address.label(class="form-control-label") }}
                                         </label>
                                             {% if form.address.errors %}
@@ -180,12 +213,17 @@
                                             {% else %}
                                                 {{ form.address(class="input--style-4 form-control form-control-lg") }}
                                             {% endif %}
-                                        
+                                            <style>
+                                                .required:after {
+                                                    content:" *";
+                                                    color: red;
+                                                }
+                                            </style>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.university.label(class="form-control-label") }}
                                         </label>
                                             {% if form.university.errors %}
@@ -198,7 +236,12 @@
                                             {% else %}
                                                 {{ form.university(class="input--style-4 form-control form-control-lg") }}
                                             {% endif %}
-                                        
+                                            <style>
+                                                .required:after {
+                                                    content:" *";
+                                                    color: red;
+                                                }
+                                            </style>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +261,7 @@
                                             {% else %}
                                                 {{ form.college(class="input--style-4 form-control form-control-lg") }}
                                             {% endif %}
-                                        
+                                            
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -243,7 +286,7 @@
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.password.label(class="form-control-label") }}
                                         </label>
                                             {% if form.password.errors %}
@@ -256,12 +299,17 @@
                                             {% else %}
                                                 {{ form.password(class="input--style-4 form-control form-control-lg") }}
                                             {% endif %}
-                                        
+                                            <style>
+                                                .required:after {
+                                                    content:" *";
+                                                    color: red;
+                                                }
+                                            </style>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        <label class="label">
+                                        <label class="label required">
                                             {{ form.confirmpassword.label(class="form-control-label") }}
                                         </label>
                                             {% if form.confirmpassword.errors %}
@@ -274,7 +322,12 @@
                                             {% else %}
                                                 {{ form.confirmpassword(class="input--style-4 form-control form-control-lg") }}
                                             {% endif %}
-                                        
+                                            <style>
+                                                .required:after {
+                                                    content:" *";
+                                                    color: red;
+                                                }
+                                            </style>
                                     </div>
                                 </div>
                             </div>                           
