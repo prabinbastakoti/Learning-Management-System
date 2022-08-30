@@ -25,7 +25,7 @@ class RegistrationForm(FlaskForm):
 
     college= StringField('College Name', validators=[DataRequired()])
 
-    regnum= StringField('Regd. No.(Optional)', validators=[Optional()])
+    regnum= StringField('Regd. No.', validators=[Optional()])
 
     password = PasswordField('Password',validators=[DataRequired(),Length(8)])
 
