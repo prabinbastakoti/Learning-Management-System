@@ -10,7 +10,7 @@ class RegistrationForm(FlaskForm):
     lastname = StringField('Last Name',
                             validators=[DataRequired(),Length(min=2,max=20)])
 
-    birthdate =DateField('Birthdate',format='%Y-%m-%d',validators=[DataRequired()])
+    birthdate =DateField('Date Of Birth',format='%Y-%m-%d',validators=[DataRequired()])
 
     gender = RadioField('Gender',validators=[DataRequired()], choices = [('Male','Male'),('Female','Female')],default='Male')
 
