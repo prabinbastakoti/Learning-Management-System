@@ -220,7 +220,13 @@
                                 <label>College</label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ current_user.college }}</p>
+                                <p>
+                                    {% if current_user.college %}
+                                        {{ current_user.college }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </p>
                             </div>
                         </div>
                         <div class="row">
