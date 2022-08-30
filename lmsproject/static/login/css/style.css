@@ -3,7 +3,7 @@ body {
   background-color: #f8fafb; }
 
 p {
-  color: #333333;
+  color: #3C4852;
   font-weight: 600; 
   font-size:20px;
   }
@@ -20,18 +20,22 @@ a {
 
 .content {
   padding: 7rem 0; }
-  .title {
-    font-size:1.75rem;
-    color: #08bd80;
-    font-weight: 600;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
   
- 
 h2 {
   font-size: 20px; }
 
+  h3 {
+    font-size: 28px; }
+.title{
+  color: #3C4852;
+  display: inline;
+  font-weight: 550;
+}
+.title1{
+  color: #08bd80;
+display: inline;
+font-weight: 550;
+}
 @media (max-width: 991.98px) {
   .content .bg {
     height: 500px; } }
