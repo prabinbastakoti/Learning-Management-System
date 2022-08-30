@@ -101,19 +101,20 @@
                                     <div class="input-group">
                                         <label class="label">{{ form.gender.label }}</label>
                                         <div class="p-t-10">
-                                            {% for subfield in form.gender %}
-                                                <label class="radio-container m-r-45">
-                                                    <tr>
-                                                        <td>{{ subfield }}</td>
-                                                        <td>{{ subfield.label }}</td>
-                                                    </tr>
-                                                    <input type="radio">
-                                                    <span class="checkmark"></span>
+                                            <div class="row row-space">
+                                                {% for subfield in form.gender %}
+                                                    <label class="radio-container m-r-45">
+                                                        <tr>
+                                                            <td>{{ subfield }}</td>
+                                                            <td>{{ subfield.label }}</td>
+                                                        </tr>
+                                                        <input type="radio">
+                                                        <span class="checkmark"></span>
+                                                        
+                                                    </label>
                                                     
-                                                </label>
-                                                <br><br>
-                                            {% endfor %}                                                       
-                                
+                                                {% endfor %}                                                       
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
