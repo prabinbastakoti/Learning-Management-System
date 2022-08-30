@@ -23,7 +23,7 @@ class RegistrationForm(FlaskForm):
 
     university= StringField('University Name', validators=[DataRequired()])
 
-    college= StringField('College Name', validators=[DataRequired()])
+    college= StringField('College Name', validators=[Optional()])
 
     regnum= StringField('Regd. No.', validators=[Optional()])
 

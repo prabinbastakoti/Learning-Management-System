@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.String(20),nullable=False)
     address = db.Column(db.String(30),nullable=False)
     university = db.Column(db.String(50),nullable=False)
-    college = db.Column(db.String(50),nullable=False)
+    college = db.Column(db.String(50),nullable=True)
     regnum = db.Column(db.String(20),nullable=True)
 
     
