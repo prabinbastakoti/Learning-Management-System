@@ -3078,11 +3078,12 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #ffffff;
+  color: #212529;
   text-align: left;
   list-style: none;
-  background-color: #08bd80;
+  background-color: #fff;
   background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 
@@ -3252,8 +3253,9 @@ input[type="button"].btn-block {
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #ffffff;
+  color: #16181b;
   text-decoration: none;
+  background-color: #f8f9fa;
 }
 
 .dropdown-item.active, .dropdown-item:active {
