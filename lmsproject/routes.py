@@ -1,7 +1,9 @@
-
+import secrets
+from PIL import Image
+import os
 from flask import render_template, url_for, flash, redirect, request
 from lmsproject import app, db, bcrypt
-from lmsproject.forms import LoginForm, RegistrationForm
+from lmsproject.forms import LoginForm, RegistrationForm, EditProfileForm
 from lmsproject.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -90,4 +92,44 @@ def subject():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html',title='Profile')
+    image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
+    return render_template('profile.html',title='Profile',
+                             image_file = image_file)
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path,'static/images/profile_pics', picture_fn)
+    
+    output_size = (250, 250)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    
+    i.save(picture_path)
+
+    return picture_fn
+
+@app.route('/editprofile', methods=['GET','POST'])
+@login_required
+def editprofile():
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+
+        current_user.phonenumber = form.phonenumber.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated!','success')
+        return redirect(url_for('profile'))
+    elif request.method == 'GET':
+        form.phonenumber.data = current_user.phonenumber
+        form.email.data = current_user.email
+
+    image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
+    return render_template('editprofile.html',title='Edit Profile',
+                             image_file = image_file ,form = form)
+
+
