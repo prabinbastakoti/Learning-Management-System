@@ -94,11 +94,6 @@ def semester():
 def subject():
     return render_template('subject.html',title='Subject')
 
-@app.route('/forum')
-@login_required
-def forum():
-    return render_template('forum.html',title='Forum')
-
 @app.route('/profile')
 @login_required
 def profile():
@@ -168,7 +163,6 @@ def community():
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html',title=post.title,post=post)
-
 
 
 @app.route("/post/<int:post_id>/update", methods=['GET','POST'])

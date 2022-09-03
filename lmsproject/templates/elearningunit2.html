@@ -1,112 +1,34 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-
-  {% if title %}
-    <title>{{ title }} - ShikshyaLaya</title>
-  {% else %}
-    <title>ShikshyaLaya</title>
-  {% endif %}
-
-
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css') }}" />
-  <!-- progress barstle -->
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
-  <!-- font wesome stylesheet -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <!-- Custom styles for this template -->
-  <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" />
-  <!-- responsive style -->
-    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/font-awesome-4.7/css/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/templatemo-space-dynamic.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/animated.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/owl.css') }}">
-
-
-
-
-
-
-
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
-<link rel="icon" 
-      type="image/png" 
-      href="{{ url_for('static',filename='images/graduation-cap.png') }}">
-
-</head>
-
-<body>
-  <div class="top_container ">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{{ url_for('home') }}">
-           
-            <img src="{{ url_for('static',filename='images/logo.png') }}">
-          </a>
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <div class="d-flex ml-auto flex-column flex-lg-row align-item-center">              
-              <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img src="images/profile.gif" width="50" height="50" class="rounded-circle">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      
-                      <a class="dropdown-item" href="#">Log Out</a>
-                    </div>
-                  </li>   
-                </ul>
-              </div>
-              </div>
-        </nav>
-      </div>
-    </header>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-            <span>{{ message }}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+{% block loginlogoutconditional %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="d-flex ml-auto flex-column flex-lg-row align-item-center">              
+   <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{{ url_for('profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="{{ url_for('static',filename='images/profile.gif')}}" width="50" height="50" class="rounded-circle">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="{{ url_for('profile')}}">View Profile</a>
+        <a class="dropdown-item" href="{{ url_for('logout')}}">Log Out</a>
+        </div>
+      </li>   
+    </ul>
   </div>
-  <!-- end header section -->
+{% endblock %}
 
-   <section class="goal_section layout_padding-top">
-    <div class="goal_logo-box">
-      <h2>
-       Learning Management System
-      </h2>
-    </div>
-  </section>
+{% block content %} 
+<section class="goal_section layout_padding-top">
+  <div class="goal_logo-box">
+    <h2>
+     Learning Management System
+    </h2>
+  </div>
+</section>
 
 
 <div id="portfolio" class="our-portfolio1 section">
-<style>
+  <style>
     .tab {
       float: left;
       border: 1px solid #ccc;
@@ -149,127 +71,119 @@
       border-left: none;
       height: auto;
     }
-    </style>
+  </style>
 
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'def')" id="defaultOpen">Content Creation Tools / Authoring Tools</button>
+    <button class="tablinks" onclick="openCity(event, 'char')">Delivery and Distribution Tools</button>
+    <button class="tablinks" onclick="openCity(event, 'his')">Learning Management Systems(LMS)</button>
+    <button class="tablinks" onclick="openCity(event, 'app')">E-learning Standards</button>
+    <button class="tablinks" onclick="openCity(event, 'too')">Advantages and Potential Drawbacks</button>
+  </div>
+  
+  <div id="def" class="tabcontent">
+    <button class="tablink" onclick="openPage('docs', this,'')" id="defaultOpen">Docs</button>
+    <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
+    <button class="tablink" onclick="openPage('tut', this, '')">Tutorials</button>
+    <button class="tablink" onclick="openPage('off', this, '')">Offline Notes</button>
     
-    <div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'def')" id="defaultOpen">Content Creation Tools / Authoring Tools</button>
-      <button class="tablinks" onclick="openCity(event, 'char')">Delivery and Distribution Tools</button>
-      <button class="tablinks" onclick="openCity(event, 'his')">Learning Management Systems(LMS)</button>
-      <button class="tablinks" onclick="openCity(event, 'app')">E-learning Standards</button>
-      <button class="tablinks" onclick="openCity(event, 'too')">Advantages and Potential Drawbacks</button>
-     </div>
+    <div id="docs" class="tabcontent1">
+      <iframe src="{{ url_for('static',filename='') }}" width="100%" height="400px">
+      </iframe>
+    </div>
     
-    <div id="def" class="tabcontent">
-      <button class="tablink" onclick="openPage('docs', this,'')" id="defaultOpen">Docs</button>
-      <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
-      <button class="tablink" onclick="openPage('tut', this, '')">Tutorials</button>
-      <button class="tablink" onclick="openPage('off', this, '')">Offline Notes</button>
-      
-      <div id="docs" class="tabcontent1">
-      
+    <div id="docs" class="tabcontent1">
+      <iframe src="{{ url_for('static',filename='') }}" width="100%" height="400px">
+      </iframe>
+    </div>
+    
+    <div id="ass" class="tabcontent1">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd-jBWVxVjdaqvGbYen34pQJ8uVVbVPjmayr9dQfO86PbFlXw/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+    
+    <div id="tut" class="tabcontent1">
 
+      <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    </div>
+    
+    <div id="off" class="tabcontent1">
 
-        <iframe src="{{ url_for('static',filename='') }}" width="100%" height="400px">
-        </iframe>
-      </div>
+      <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>
+      <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>
+      <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>
+      <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>
+      <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>
+
+    </div>
+    <style>
+    .tablink {
+        background-color: #08bd80;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+      }
       
-      <div id="docs" class="tabcontent1">
-        <iframe src="{{ url_for('static',filename='') }}" width="100%" height="400px">
-        </iframe>
-      </div>
-      
-      <div id="ass" class="tabcontent1">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd-jBWVxVjdaqvGbYen34pQJ8uVVbVPjmayr9dQfO86PbFlXw/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-      </div>
-      
-      <div id="tut" class="tabcontent1">
+      .tablink:hover {
+        background-color: #777;
+        color: black;
         
-        <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-        <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="300" height="180" src="https://www.youtube.com/embed/jBTVzb2vg0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+      }
       
-      <div id="off" class="tabcontent1">
-        <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>.
-        <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>.
-        <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>.
-        <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>.
-        <a href="file:///D:/project%20learning%20management/ICT%20in%20asssessment.pdf">example</a>.
+      /* Style the tab content (and add height:100% for full page content) */
+      .tabcontent1 {
+        color: black;
+        display: none;
+        padding: 100px 20px;
+        height: 100%;
+      }
+      
+      #docs{background-color: white;}
+      #ass {background-color: white; }
+      #tut {background-color: white; }
+      #off {background-color: white; }
+    </style>    
+  </div>
+  
+  <div id="char" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p> 
+  </div>
+  
+  <div id="his" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
 
-
-      </div>
-        <style>
-        .tablink {
-            background-color: #08bd80;
-            color: white;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            font-size: 17px;
-            width: 25%;
-          }
-          
-          .tablink:hover {
-            background-color: #777;
-            color: black;
-            
-          }
-          
-          /* Style the tab content (and add height:100% for full page content) */
-          .tabcontent1 {
-            color: black;
-            display: none;
-            padding: 100px 20px;
-            height: 100%;
-          }
-          
-          #docs{background-color: white;}
-          #ass {background-color: white; }
-          #tut {background-color: white; }
-          #off {background-color: white; }
-          </style>
-          
-          
-          
-          
-    </div>
+  <div id="app" class="tabcontent">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+  </div>
     
-    <div id="char" class="tabcontent">
-      <h3>Paris</h3>
-      <p>Paris is the capital of France.</p> 
-    </div>
+  <div id="too" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p> 
+  </div>
     
-    <div id="his" class="tabcontent">
-      <h3>Tokyo</h3>
-      <p>Tokyo is the capital of Japan.</p>
-    </div>
+  <div id="comm" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
 
-    <div id="app" class="tabcontent">
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
-      </div>
-      
-      <div id="too" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p> 
-      </div>
-      
-      <div id="comm" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
-      </div>
-
-      <div id="col" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
-      </div>
-      
-    <script>
+  <div id="col" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
+</div>   
+  <script>
     function openCity(evt, cityName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -290,185 +204,20 @@
 
 
     function openPage(pageName,elmnt,color) {
-          var i, tabcontent1, tablinks;
-          tabcontent1 = document.getElementsByClassName("tabcontent1");
-          for (i = 0; i < tabcontent1.length; i++) {
-            tabcontent1[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablink");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].style.backgroundColor = "";
-          }
-          document.getElementById(pageName).style.display = "block";
-          elmnt.style.backgroundColor = color;
-        }
-        
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-    </script>
-       
+      var i, tabcontent1, tablinks;
+      tabcontent1 = document.getElementsByClassName("tabcontent1");
+      for (i = 0; i < tabcontent1.length; i++) {
+        tabcontent1[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+    }
       
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-  
-
-
-
-
-   
-
-
-      <!-- end contact section -->
-      <section class="info_section layout_padding-top">
-        <div class="info_logo-box">
-          <h2>
-              SHIKSHYALAYA
-          </h2>
-        </div>
-          <div class="container layout_padding2">
-            <div class="row">
-              <div class="col-md-3">
-                <h5>
-                    About Us                                                                             
-                </h5>
-               <p>
-                  dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r 
-               </p>
-              </div>
-              <div class="col-md-3">
-                <h5>
-                    Useful Link 
-                </h5>
-                <ul>
-                  <li>
-                    <a href="">
-                        Video games
-                    </a>
-                  </li>
-                  <li>
-                   <a href="">
-                      Remote control
-                   </a>
-                  </li>
-                  <li>
-                    <a href="">
-                        3d controller
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h5>
-                    Contact Us
-                </h5>
-                <p>
-                    dolor sit amet, consectetur magna aliqua. quisdotempor incididunt ut e 
-                </p>
-              </div>
-              <div class="col-md-3">
-           
-                <div class="subscribe_container">
-                  <h5>
-                      Newsletter
-                  </h5>
-                  <div class="form_container">
-                    <form action="">
-                      <input type="email" placeholder="Enter your email">
-                      <button type="submit">
-                        Subscribe
-                      </button>
-                    </form>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          <div class="container">
-              <div class="social_container">
-                 
-                  <div class="social-box">
-                    <a href="">
-                      <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
-                    </a>
-      
-                    <a href="">
-                      <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
-                    </a>
-                    <a href="">
-                      <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
-                    </a>
-                    <a href="">
-                      <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
-                    </a>
-                  </div>
-                </div>
-          </div>
-        </section>
-
-  <!-- footer section -->
-  <section class="container-fluid footer_section">
-    <p>
-        Copyright &copy; 2022 All Rights Reserved By ShikshyaLaya 
-      </p>
-  </section>
-
-  <!-- footer section -->
-
-  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.4.1.min.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
-
-
-</body>
-
-</html>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+{% endblock %}

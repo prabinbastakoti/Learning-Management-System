@@ -506,12 +506,12 @@ width: 280px;
 
 /* info section */
 .info_section {
-  background-color:#5a6e7f;
+  background-color:#3C4852;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
 }
 .info_section1 {
-  background-color:#5a6e7f;
+  background-color:#3C4852;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
   margin-top: 50px;
@@ -526,7 +526,7 @@ width: 280px;
 .info_logo-box h2 {
   font-weight: bold;
   padding: 5px 7px;
-  border-bottom: 1.5px solid #000000;
+  border-bottom: 1.5px solid #ffffff;
 }
 
 .info_section ul {
