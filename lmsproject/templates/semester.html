@@ -51,7 +51,7 @@
 
 </head>
 
-<body class="sub_page">
+<body>
   <div class="top_container ">
     <!-- header section strats -->
     <header class="header_section">
@@ -113,8 +113,11 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">
-            {{ message }}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <span>{{ message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         {% endfor %}
       {% endif %}
@@ -132,6 +135,33 @@
 
 
   <div id="portfolio" class="our-portfolio1 section">
+    <!--
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/1.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/two.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/three.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/four.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/five.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/six.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/seven.gif')}}" alt="Card image cap">
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="card-img-top" src="{{ url_for('static',filename='images/eight.gif')}}" alt="Card image cap">
+    </div>
+    
+  -->
 
   <div class="hero_btn1-continer">
     <a href="#" class="call_to-btn btn_white-border">

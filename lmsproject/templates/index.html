@@ -92,15 +92,18 @@
     </header>
   </div>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">
-            {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        <span>{{ message }}</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
     <section class="hero_section ">
       <div class="hero-container container">
@@ -139,7 +142,7 @@
         
         <div class="col-lg-3 col-sm-6">
 
-          <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+          <div class="item wow bounceInUp">
             <div class="hidden-content">
               <h4>Learn anytime, anywhere </h4>
               <p>Gets access to all our offline course materials.</p>
@@ -283,17 +286,17 @@
               <div class="social_container">
                  
                   <div class="social-box">
-                    <a href="{{ url_for('home') }}">
+                    <a href="https://www.facebook.com/ShikshyaLaya-102935545883000">
                       <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
                     </a>
       
-                    <a href="{{ url_for('home') }}">
+                    <a href="https://twitter.com/shikshya_laya">
                       <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
                     </a>
-                    <a href="{{ url_for('home') }}">
+                    <a href="https://www.linkedin.com/in/shikshya-laya-b1b11124b/">
                       <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
                     </a>
-                    <a href="{{ url_for('home') }}">
+                    <a href="https://www.instagram.com/shikshya.laya/">
                       <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
                     </a>
                   </div>

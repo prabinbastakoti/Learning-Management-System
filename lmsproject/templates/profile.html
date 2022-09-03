@@ -19,8 +19,7 @@
     <title>ShikshyaLaya</title>
   {% endif %}
 
-
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -35,26 +34,24 @@
   <!-- Custom styles for this template -->
   <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
-    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/templatemo-space-dynamic.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/animated.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.css') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
+  <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
+ <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
+      <link rel="stylesheet" href="{{ url_for('static',filename='vendor\font-awesome-4.7\css\font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/templatemo-space-dynamic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/animated.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/owl.css') }}">
 
 
-
-
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
 <link rel="icon" 
       type="image/png" 
       href="{{ url_for('static',filename='images/graduation-cap.png') }}">
 
 </head>
 
-<body class="sub_page">
+<body>
   <div class="top_container ">
-    <!-- header section strats -->
+    
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -84,13 +81,16 @@
       </div>
     </header>
     {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">
-            {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          <span>{{ message }}</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    {% endif %}
     {% endwith %}
   </div>
   <!-- end header section -->

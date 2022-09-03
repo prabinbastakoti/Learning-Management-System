@@ -2,7 +2,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed 
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, RadioField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, RadioField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
 from lmsproject.models import User
 
@@ -81,3 +81,13 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(phonenumber = phonenumber.data).first()
             if user:
                 raise ValidationError('This Phonenumber is already used. Please choose a different one.')
+
+
+
+
+class PostForm(FlaskForm):
+    title = StringField('Title',validators=[DataRequired()])
+
+    content = TextAreaField('Content',validators=[DataRequired()])
+
+    submit = SubmitField('Post')

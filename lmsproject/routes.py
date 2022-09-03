@@ -1,10 +1,10 @@
 import secrets
 from PIL import Image
 import os
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from lmsproject import app, db, bcrypt
-from lmsproject.forms import LoginForm, RegistrationForm, EditProfileForm
-from lmsproject.models import User
+from lmsproject.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
+from lmsproject.models import User , Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -69,6 +69,11 @@ def elearningunit1():
 def elearningunit2():
     return render_template('elearningunit2.html',title='E-learning Unit2')
 
+@app.route('/elearningunit4')
+@login_required
+def elearningunit4():
+    return render_template('elearningunit4.html',title='E-learning Unit4')
+
 @app.route('/elearning')
 @login_required
 def elearning():
@@ -88,6 +93,11 @@ def semester():
 @login_required
 def subject():
     return render_template('subject.html',title='Subject')
+
+@app.route('/forum')
+@login_required
+def forum():
+    return render_template('forum.html',title='Forum')
 
 @app.route('/profile')
 @login_required
@@ -133,3 +143,61 @@ def editprofile():
                              image_file = image_file ,form = form)
 
 
+@app.route('/post/new', methods=['GET','POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data,content=form.content.data,author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created!','success')
+        return redirect(url_for('community'))
+
+    return render_template('create_post.html',title='New Post', form = form, legend = 'New Post') 
+
+
+@app.route('/community')
+@login_required
+def community():
+    posts = Post.query.all()
+    return render_template('community.html',title='Community',posts = posts)
+
+
+@app.route("/post/<int:post_id>")
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html',title=post.title,post=post)
+
+
+
+@app.route("/post/<int:post_id>/update", methods=['GET','POST'])
+@login_required
+def update_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        db.session.commit()
+        flash('Your post has been updated!','success')
+        return redirect(url_for('post',post_id = post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('create_post.html',title='Update Post',
+                            form = form, legend = 'Update Post')
+
+
+@app.route("/post/<int:post_id>/delete", methods=['POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!','success')
+    return redirect(url_for('community'))

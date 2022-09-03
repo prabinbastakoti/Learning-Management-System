@@ -51,7 +51,7 @@
 
 </head>
 
-<body class="sub_page">
+<body>
   <div class="top_container ">
     <!-- header section strats -->
     <header class="header_section">
@@ -88,8 +88,11 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">
-            {{ message }}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <span>{{ message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         {% endfor %}
       {% endif %}
@@ -468,8 +471,8 @@
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-        Copyright &copy; 2022 All Rights Reserved By
-        <a href="https://html.design/">ShikshyaLaya</a>
+        Copyright &copy; 2022 All Rights Reserved By ShikshyaLaya
+        
       </p>
   </section>
 
