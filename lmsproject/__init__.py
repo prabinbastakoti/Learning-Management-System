@@ -7,6 +7,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'afaf8a7f6a76f9af7afbjkaf'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' # To Create database named site.db in current directory.
 db = SQLAlchemy(app)
