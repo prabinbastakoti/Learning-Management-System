@@ -95,32 +95,29 @@
 </div>
 
 
-<div class="main-banner wow fadeIn" id="about" data-wow-duration="1s" data-wow-delay="0.5s">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="col-lg-6 align-self-center">
-            <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-              <h2>Join Our <span>Community</span> </h2>
-              <p>
-              At Shikshyalaya, we believe every student has a right to information. We along with our other students want to create a network of communities for them so that one student can help others. 
-              </p>
-              <div class="hero_btn-continer1">
-                <a href="{{ url_for('community') }}" class="call_to-btn btn_white-border">
-                  Get Started
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-              <img src="{{ url_for('static',filename='images/community.png') }}" alt="community">
-            </div>
-          </div>
-        </div>
+<section class="hero_section ">
+  <div class="hero-container container">
+    <div class="hero_detail-box">
+      <h1>
+         Join Our Community
+      </h1>
+      <p>
+        At Shikshyalaya, we believe every student has a right to information. We along with our other students want to create a network of communities for them so that one student can help others. 
+             
+      </p>
+
+      <div class="hero_btn-continer1">
+        <a href="{{ url_for('login') }}" class="call_to-btn btn_white-border">
+        Start Learning
+        </a>
+      </div>
+    </div>
+    <div class="hero_img-container">
+      <div>
+          <img src="{{ url_for('static',filename='images/community.png') }}" alt="" class="img-fluid">
       </div>
     </div>
   </div>
-</div>
+</section>
+
 {% endblock %}
