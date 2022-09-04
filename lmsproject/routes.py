@@ -1,6 +1,7 @@
 import secrets
 from PIL import Image
 import os
+import requests
 from flask import render_template, url_for, flash, redirect, request, abort
 from lmsproject import app, db, bcrypt
 from lmsproject.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
@@ -8,9 +9,25 @@ from lmsproject.models import User , Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
+def subscribe_user(email, user_group_email, api_key):
+    resp = requests.post(f"https://api.mailgun.net/v3/lists/{user_group_email}/members",
+                        auth=("api", api_key),
+                        data={"subscribed":True,
+                                "address":email}
+                        )
+    print(resp.status_code)
+    return resp
+
 @app.route('/')
-@app.route('/home')
+@app.route('/home', methods=["GET","POST"])
 def home():
+    # if user submits the form
+    if request.method == "POST":
+
+        email = request.form.get('newsemail')
+        subscribe_user(email=email, user_group_email="newsletter@sandbox9d568c62a07a45b79b02eeb2189772e5.mailgun.org",
+                        api_key="9b8ff4bf62a246c0d9362a5731db2e08-07e2c238-2acae694")
+        flash('Thanks for subscribing to our newsletter!','success')
     return render_template('index.html',title='Home')
 
 

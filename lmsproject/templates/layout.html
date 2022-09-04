@@ -138,9 +138,9 @@
                       Newsletter
                   </h5>
                   <div class="form_container">
-                    <form action="">
-                      <input type="email" placeholder="Enter your email">
-                      <button type="submit">
+                    <form method="POST">
+                      <input type="email"name="newsemail" placeholder="Enter your email">
+                      <button type="submit" id="submit">
                         Subscribe
                       </button>
                     </form>
@@ -184,7 +184,6 @@
   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.4.1.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
 
- 
 </body>
 
 </html>
