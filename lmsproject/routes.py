@@ -155,7 +155,8 @@ def new_post():
 @app.route('/community')
 @login_required
 def community():
-    posts = Post.query.all()
+    page = request.args.get('page',1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page,per_page=5)
     return render_template('community.html',title='Community',posts = posts)
 
 
@@ -195,3 +196,15 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!','success')
     return redirect(url_for('community'))
+
+
+
+@app.route("/user/<string:email>")
+@login_required
+def user_posts(email):
+    page = request.args.get('page',1, type=int)
+    user = User.query.filter_by(email=email).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page,per_page=5)
+    return render_template('user_posts.html',posts = posts, user=user)

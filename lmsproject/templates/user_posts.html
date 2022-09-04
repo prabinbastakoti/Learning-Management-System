@@ -33,6 +33,7 @@
             {% endfor %}
           {% endif %}
           {% endwith %}
+          <h1 class="mb-3">Posts by {{ user.firstname }} {{ user.lastname }} ({{ posts.total }})</h1>
           {% for post in posts.items %}
             <article class="media content-section">
               <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
@@ -49,9 +50,9 @@
           {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
             {% if page_num %}
               {% if posts.page == page_num %}
-                <a class="btn btn-info mb-4" href="{{ url_for('community',page=page_num) }}">{{ page_num }}</a>
+                <a class="btn btn-info mb-4" href="{{ url_for('user_posts',email=user.email,page=page_num) }}">{{ page_num }}</a>
               {% else %}
-                <a class="btn btn-outline-info mb-4" href="{{ url_for('community',page=page_num) }}">{{ page_num }}</a>
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('user_posts',email=user.email,page=page_num) }}">{{ page_num }}</a>
               {% endif %} 
 
             {% else %}
