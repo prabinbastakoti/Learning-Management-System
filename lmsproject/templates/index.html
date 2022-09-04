@@ -33,6 +33,7 @@
 {% block content %}
 <section class="hero_section ">
   <div class="hero-container container">
+   
     <div class="hero_detail-box">
       <h1>
           Democratize
@@ -50,6 +51,8 @@
           <img src="{{ url_for('static',filename='images/free.webp') }}" alt="" class="img-fluid">
       </div>
     </div>
+  
+  
   </div>
 </section>
 
@@ -95,11 +98,12 @@
 </div>
 
 
-<section class="hero_section ">
+<section class="hero_section1">
   <div class="hero-container container">
+    <div class="row">
     <div class="hero_detail-box">
       <h1>
-         Join Our Community
+         Join Our<span> Community</span>
       </h1>
       <p>
         At Shikshyalaya, we believe every student has a right to information. We along with our other students want to create a network of communities for them so that one student can help others. 
@@ -108,15 +112,16 @@
 
       <div class="hero_btn-continer1">
         <a href="{{ url_for('login') }}" class="call_to-btn btn_white-border">
-        Start Learning
+        Get Started
         </a>
       </div>
     </div>
-    <div class="hero_img-container">
+    <div class="hero_img-container1">
       <div>
           <img src="{{ url_for('static',filename='images/community.png') }}" alt="" class="img-fluid">
       </div>
     </div>
+  </div>
   </div>
 </section>
 
