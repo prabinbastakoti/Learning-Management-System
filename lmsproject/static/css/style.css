@@ -249,11 +249,13 @@ width: 280px;
 }
 .hero-container {
   display: flex;
-
+  margin-bottom: 40px;
+ 
 }
 
 .hero_detail-box {
   width: 40%;
+  padding-top: 40px;
 }
 .hero_detail-box h1 span {
   color: #08bd80;
