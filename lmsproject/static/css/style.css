@@ -242,14 +242,27 @@ width: 280px;
 /*end header section*/
 
 /* hero section */
+.hero_section1{
+  height:90vh;
+  margin-top: 25px;
+  margin-bottom: 4px;
+}
 .hero-container {
   display: flex;
-  padding-top: 90px;
-  padding-bottom: 25px;
+  margin-bottom: 40px;
+ 
 }
 
 .hero_detail-box {
   width: 40%;
+  padding-top: 40px;
+}
+.hero_detail-box h1 span {
+  color: #08bd80;
+}
+.hero_detail-box p{
+  color: #000000;
+  font-size: 18px;
 }
 
 .hero_img-container {
@@ -267,14 +280,17 @@ width: 280px;
 }
 .hero_img-container1 {
   width: 50%;
-  display: flex;
-  justify-content: center;
-  margin-top: -7%;
+  display:block;
+ align-items: right;
+ 
 
 }
 
 .hero_img-container1 img {
   width: 100%;
+  display: flex;
+  margin-left: 60px;
+
 }
 .hero_detail-box h1 {
   font-size: 47px;
