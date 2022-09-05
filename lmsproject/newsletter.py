@@ -6,7 +6,7 @@ r = requests.post(
                 "https://api.mailgun.net/v3/sandbox9d568c62a07a45b79b02eeb2189772e5.mailgun.org/messages",
 
                 # Authentication part - A Tuple
-                auth=("api", "9b8ff4bf62a246c0d9362a5731db2e08-07e2c238-2acae694"),
+                auth=("api", "key-c7991841f928ef2c6f73706ff5ead2d5"),
 
                 # mail data will be used to send emails
                 data={

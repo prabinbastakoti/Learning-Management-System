@@ -25,9 +25,8 @@ def home():
     if request.method == "POST":
         email = request.form.get('newsemail')
         subscribe_user(email=email, user_group_email="newsletter@sandbox9d568c62a07a45b79b02eeb2189772e5.mailgun.org",
-                        api_key="9b8ff4bf62a246c0d9362a5731db2e08-07e2c238-2acae694")
-        if email:
-            flash('Thanks for subscribing to our newsletter!','success')
+                        api_key="key-c7991841f928ef2c6f73706ff5ead2d5")  
+        flash('Thanks for subscribing to our newsletter!','success')
     return render_template('index.html',title='Home')
 
 
