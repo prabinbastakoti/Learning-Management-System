@@ -18,7 +18,7 @@ def subscribe_user(email, user_group_email, api_key):
     print(resp.status_code)
     return resp
 
-@app.route('/')
+@app.route('/', methods=["GET","POST"])
 @app.route('/home', methods=["GET","POST"])
 def home():
     # if user submits the form
@@ -26,7 +26,11 @@ def home():
         email = request.form.get('newsemail')
         subscribe_user(email=email, user_group_email="newsletter@sandbox9d568c62a07a45b79b02eeb2189772e5.mailgun.org",
                         api_key="key-c7991841f928ef2c6f73706ff5ead2d5")  
-        flash('Thanks for subscribing to our newsletter!','success')
+        if email:
+            flash('Thanks for subscribing to our newsletter!','success')
+        else:
+            flash("Enter your email to subscribe to our newsletter to receive latest news and exciting offers every week.",'primary')
+        
     return render_template('index.html',title='Home')
 
 
