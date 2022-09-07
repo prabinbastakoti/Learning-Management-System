@@ -9,28 +9,10 @@ from lmsproject.models import User , Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
-def subscribe_user(email, user_group_email, api_key):
-    resp = requests.post(f"https://api.mailgun.net/v3/lists/{user_group_email}/members",
-                        auth=("api", api_key),
-                        data={"subscribed":True,
-                                "address":email}
-                        )
-    print(resp.status_code)
-    return resp
 
 @app.route('/', methods=["GET","POST"])
 @app.route('/home', methods=["GET","POST"])
 def home():
-    # if user submits the form
-    if request.method == "POST":
-        email = request.form.get('newsemail')
-        subscribe_user(email=email, user_group_email="newsletter@sandbox9d568c62a07a45b79b02eeb2189772e5.mailgun.org",
-                        api_key="key-c7991841f928ef2c6f73706ff5ead2d5")  
-        if email:
-            flash('Thanks for subscribing to our newsletter!','success')
-        else:
-            flash("Enter your email to subscribe to our newsletter to receive latest news and exciting offers every week.",'primary')
-        
     return render_template('index.html',title='Home')
 
 
@@ -53,6 +35,7 @@ def login():
     return render_template('login.html',form = form,title='Login')
 
 
+
 @app.route('/signup',methods=['GET','POST'])
 def signup():
     if current_user.is_authenticated:
@@ -69,6 +52,8 @@ def signup():
         return redirect(url_for('login'))
     return render_template('signup.html',form = form,title='SignUp')
 
+
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -77,49 +62,63 @@ def logout():
 
 
 
-
-
-@app.route('/elearningunit1')
+@app.route('/elearningunit1',methods=['GET','POST'])
 @login_required
 def elearningunit1():
     return render_template('elearningunit1.html',title='E-learning Unit1')
 
-@app.route('/elearningunit2')
+
+
+@app.route('/elearningunit2',methods=['GET','POST'])
 @login_required
 def elearningunit2():
     return render_template('elearningunit2.html',title='E-learning Unit2')
 
-@app.route('/elearningunit4')
+
+
+@app.route('/elearningunit4',methods=['GET','POST'])
 @login_required
 def elearningunit4():
     return render_template('elearningunit4.html',title='E-learning Unit4')
 
-@app.route('/elearning')
+
+
+@app.route('/elearning',methods=['GET','POST'])
 @login_required
 def elearning():
     return render_template('elearning.html',title='E-learning')
 
-@app.route('/faculty')
+
+
+@app.route('/faculty',methods=['GET','POST'])
 @login_required
 def faculty():
     return render_template('faculty.html',title='Faculty')
 
-@app.route('/semester')
+
+
+@app.route('/semester',methods=['GET','POST'])
 @login_required
 def semester():
     return render_template('semester.html',title='Semester')
 
-@app.route('/subject')
+
+
+@app.route('/subject',methods=['GET','POST'])
 @login_required
 def subject():
     return render_template('subject.html',title='Subject')
 
-@app.route('/profile')
+
+
+@app.route('/profile',methods=['GET','POST'])
 @login_required
 def profile():
     image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
     return render_template('profile.html',title='Profile',
                              image_file = image_file)
+
+
 
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
@@ -135,11 +134,14 @@ def save_picture(form_picture):
 
     return picture_fn
 
-@app.route('/editprofile', methods=['GET','POST'])
+
+
+@app.route('/editprofile',methods=['GET','POST'])
 @login_required
 def editprofile():
     form = EditProfileForm()
     if form.validate_on_submit():
+        
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
@@ -149,6 +151,7 @@ def editprofile():
         db.session.commit()
         flash('Your account has been updated!','success')
         return redirect(url_for('profile'))
+
     elif request.method == 'GET':
         form.phonenumber.data = current_user.phonenumber
         form.email.data = current_user.email
@@ -156,6 +159,7 @@ def editprofile():
     image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
     return render_template('editprofile.html',title='Edit Profile',
                              image_file = image_file ,form = form)
+
 
 
 @app.route('/post/new', methods=['GET','POST'])
@@ -172,7 +176,8 @@ def new_post():
     return render_template('create_post.html',title='New Post', form = form, legend = 'New Post') 
 
 
-@app.route('/community')
+
+@app.route('/community',methods=['GET','POST'])
 @login_required
 def community():
     page = request.args.get('page',1, type=int)
@@ -180,10 +185,12 @@ def community():
     return render_template('community.html',title='Community',posts = posts)
 
 
-@app.route("/post/<int:post_id>")
+
+@app.route("/post/<int:post_id>",methods=['GET','POST'])
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html',title=post.title,post=post)
+
 
 
 @app.route("/post/<int:post_id>/update", methods=['GET','POST'])
@@ -206,6 +213,7 @@ def update_post(post_id):
                             form = form, legend = 'Update Post')
 
 
+
 @app.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id):
@@ -219,7 +227,7 @@ def delete_post(post_id):
 
 
 
-@app.route("/user/<string:email>")
+@app.route("/user/<string:email>",methods=['GET','POST'])
 @login_required
 def user_posts(email):
     page = request.args.get('page',1, type=int)
@@ -228,3 +236,5 @@ def user_posts(email):
         .order_by(Post.date_posted.desc())\
         .paginate(page=page,per_page=5)
     return render_template('user_posts.html',posts = posts, user=user)
+
+
