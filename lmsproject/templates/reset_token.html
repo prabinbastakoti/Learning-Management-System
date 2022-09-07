@@ -61,54 +61,41 @@
             <form method="POST" action="" >
                 {{ form.hidden_tag() }}
                   <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Reset Password</legend>
                       <div class="form-group first">
-                          {{ form.email.label(class="form-control-label") }}
-                          {% if form.email.errors %}
-                              {{ form.email(class="form-control form-control-lg is-invalid") }}
+                          {{ form.password.label(class="form-control-label") }}
+                          {% if form.password.errors %}
+                              {{ form.password(class="form-control form-control-lg is-invalid") }}
                               <div class="invalid-feedback">
-                                  {% for error in form.email.errors %}
+                                  {% for error in form.password.errors %}
                                       <span>{{ error }}</span>
                                   {% endfor %}
 
                               </div>
                           {% else %}
-                              {{ form.email(class="form-control form-control-lg") }}
+                              {{ form.password(class="form-control form-control-lg") }}
 
                           {% endif %}
-
                       </div>
-                      <div class="form-group last mb-4">
-                          {{ form.password.label(class="form-control-label") }}
-                        {% if form.password.errors %}
-                          {{ form.password(class="form-control form-control-lg is-invalid") }}
-                          <div class="invalid-feedback">
-                              {% for error in form.password.errors %}
-                                  <span>{{ error }}</span>
-                              {% endfor %}
+                      <div class="form-group first">
+                        {{ form.confirmpassword.label(class="form-control-label") }}
+                        {% if form.confirmpassword.errors %}
+                            {{ form.confirmpassword(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.confirmpassword.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
 
-                          </div>
-                      {% else %}
-                          {{ form.password(class="form-control form-control-lg") }}
+                            </div>
+                        {% else %}
+                            {{ form.confirmpassword(class="form-control form-control-lg") }}
 
-                      {% endif %}
-
-                      </div>
-                      
+                        {% endif %}
+                    </div>
+                                           
                   </fieldset>
-                  <div class="d-flex mb-5 align-items-center">
-                      <label class="control control--checkbox mb-0 text-muted ">
-                        <input type="checkbox" checked="checked"/>
-                          {{ form.remember(class ="form-check-input") }}
-                          {{ form.remember.label(class="form-check-label") }}
-                        <div class="control__indicator"></div>
-                      </label>
-                      <span class="ml-auto"><a href="{{ url_for('reset_request') }}" class="forgot-pass">Forgot Password</a></span> 
-                  </div>
-
             
                   {{ form.submit(class="btn text-white btn-block btn-primary") }}
-
-                  <span class="d-block text-left my-4 text-muted"><a href="{{ url_for('signup') }}" class="create an account ">Create an Account</a></span> 
             
             </form>
             </div>
