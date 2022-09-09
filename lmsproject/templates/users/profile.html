@@ -5,11 +5,11 @@
   <div class="d-flex ml-auto flex-column flex-lg-row align-item-center">              
    <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="{{ url_for('profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="{{ url_for('users.profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="{{ url_for('static',filename='images/profile.gif')}}" width="50" height="50" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{ url_for('logout')}}">Log Out</a>
+        <a class="dropdown-item" href="{{ url_for('users.logout')}}">Log Out</a>
         </div>
       </li>   
     </ul>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <a href="{{ url_for('editprofile') }}">
+                <a href="{{ url_for('users.editprofile') }}">
                     <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                 </a>
             </div>

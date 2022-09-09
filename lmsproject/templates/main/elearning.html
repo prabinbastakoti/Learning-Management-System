@@ -5,12 +5,12 @@
   <div class="d-flex ml-auto flex-column flex-lg-row align-item-center">              
    <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="{{ url_for('profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="{{ url_for('users.profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="{{ url_for('static',filename='images/profile.gif')}}" width="50" height="50" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{ url_for('profile')}}">View Profile</a>
-        <a class="dropdown-item" href="{{ url_for('logout')}}">Log Out</a>
+        <a class="dropdown-item" href="{{ url_for('users.profile')}}">View Profile</a>
+        <a class="dropdown-item" href="{{ url_for('users.logout')}}">Log Out</a>
         </div>
       </li>   
     </ul>
@@ -28,12 +28,12 @@
 
 <div id="portfolio" class="our-portfolio1 section">
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('elearningunit1') }}" class="call_to-btn1 btn_white-border">
+    <a href="{{ url_for('main.elearningunit1') }}" class="call_to-btn1 btn_white-border">
       E-learning - Concept and Charcteristics 
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('elearningunit2') }}" class="call_to-btn1 btn_white-border">
+    <a href="{{ url_for('main.elearningunit2') }}" class="call_to-btn1 btn_white-border">
       Learning Management System 
     </a>
   </div>
@@ -43,7 +43,7 @@
     </a>
   </div>
   <div class="hero_btn1-continer">
-    <a href="{{ url_for('elearningunit4') }}" class="call_to-btn1 btn_white-border">
+    <a href="{{ url_for('main.elearningunit4') }}" class="call_to-btn1 btn_white-border">
       ICT in ASSESSMENT 
     </a>
   </div>

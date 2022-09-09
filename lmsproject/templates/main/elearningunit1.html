@@ -5,12 +5,12 @@
   <div class="d-flex ml-auto flex-column flex-lg-row align-item-center">              
    <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="{{ url_for('profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="{{ url_for('users.profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="{{ url_for('static',filename='images/profile.gif')}}" width="50" height="50" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{ url_for('profile')}}">View Profile</a>
-        <a class="dropdown-item" href="{{ url_for('logout')}}">Log Out</a>
+        <a class="dropdown-item" href="{{ url_for('users.profile')}}">View Profile</a>
+        <a class="dropdown-item" href="{{ url_for('users.logout')}}">Log Out</a>
         </div>
       </li>   
     </ul>
@@ -21,7 +21,7 @@
 <section class="goal_section layout_padding-top">
   <div class="goal_logo-box">
     <h2>
-     ICT in Assessment
+      E-learning - Concept & Charcteristics
     </h2>
   </div>
 </section>
@@ -73,17 +73,17 @@
   </style>
 
   <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'int')" id="defaultOpen1">Introduction</button>
-    <button class="tablinks" onclick="openCity(event, 'mea')">Meaning and Types of Assessment</button>
-    <button class="tablinks" onclick="openCity(event, 'rol')">Role of ICT in Assessment</button>
-    <button class="tablinks" onclick="openCity(event, 'ass')"> Assessment: Digital Tools and Options</button>
-    <button class="tablinks" onclick="openCity(event, 'epo')">E-portfolio</button>
-    <button class="tablinks" onclick="openCity(event, 'dig')">Digital Rubrics</button>
-    <button class="tablinks" onclick="openCity(event, 'alt')">Digital Assessment Alternatives</button>
-    <button class="tablinks" onclick="openCity(event, 'the')">The Trends in Technology Based Assessment</button>
-   </div>
+    <button class="tablinks" onclick="openCity(event, 'def')"  id="defaultOpen1" >Definition of E-learning</button>
+    <button class="tablinks" onclick="openCity(event, 'char')">Characteristics of e- learning</button>
+    <button class="tablinks" onclick="openCity(event, 'his')" > History of E- learning</button>
+    <button class="tablinks" onclick="openCity(event, 'app')" >Approaches E-learning</button>
+    <button class="tablinks" onclick="openCity(event, 'too')" >E-learning Tools and Technologies</button>
+    <button class="tablinks" onclick="openCity(event, 'comm')"> Communication Tools</button>
+    <button class="tablinks" onclick="openCity(event, 'col')" > Collaboration Tools </button>
+    
+  </div>
   
-  <div id="int" class="tabcontent" >
+  <div id="def" class="tabcontent" >
     <button class="tablink" onclick="openPage('docs',this,'')" id="defaultOpen" >Docs</button>
     <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
     <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
@@ -148,7 +148,7 @@
         
   </div>
   
-  <div id="mea" class="tabcontent">        
+  <div id="char" class="tabcontent">        
     <button class="tablink" onclick="openPage('docss',this,'')"  >Docs</button>
     <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
     <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
@@ -160,7 +160,7 @@
     
   </div>
   
-  <div id="rol" class="tabcontent">
+  <div id="his" class="tabcontent">
     <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
     <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
     <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
@@ -168,15 +168,7 @@
 
   </div>
 
-  <div id="ass" class="tabcontent">
-    <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
-    <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
-    <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
-    <button class="tablink" onclick="openPage('off', this, '')" >Offline Notes</button>
-
-  </div>
-    
-  <div id="epo" class="tabcontent">
+  <div id="app" class="tabcontent">
     <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
     <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
     <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
@@ -184,7 +176,15 @@
 
   </div>
     
-  <div id="dig" class="tabcontent">
+  <div id="too" class="tabcontent">
+    <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
+    <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
+    <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
+    <button class="tablink" onclick="openPage('off', this, '')" >Offline Notes</button>
+
+  </div>
+    
+  <div id="comm" class="tabcontent">
     <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
     <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
     <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
@@ -192,19 +192,11 @@
 
   </div>
 
-  <div id="alt" class="tabcontent">
+  <div id="col" class="tabcontent">
     <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
     <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
     <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
     <button class="tablink" onclick="openPage('off', this, '')" >Offline Notes</button>
-  
-  </div>
-
-  <div id="the" class="tabcontent">
-      <button class="tablink" onclick="openPage('docs',this,'')"  >Docs</button>
-      <button class="tablink" onclick="openPage('ass', this, '')" >Assessment</button>
-      <button class="tablink" onclick="openPage('tut', this, '')" >Tutorials</button>
-      <button class="tablink" onclick="openPage('off', this, '')" >Offline Notes</button>
   
   </div>
 </div>

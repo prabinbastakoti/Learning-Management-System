@@ -102,13 +102,13 @@
                           {{ form.remember.label(class="form-check-label") }}
                         <div class="control__indicator"></div>
                       </label>
-                      <span class="ml-auto"><a href="{{ url_for('reset_request') }}" class="forgot-pass">Forgot Password</a></span> 
+                      <span class="ml-auto"><a href="{{ url_for('users.reset_request') }}" class="forgot-pass">Forgot Password</a></span> 
                   </div>
 
             
                   {{ form.submit(class="btn text-white btn-block btn-primary") }}
 
-                  <span class="d-block text-left my-4 text-muted"><a href="{{ url_for('signup') }}" class="create an account ">Create an Account</a></span> 
+                  <span class="d-block text-left my-4 text-muted"><a href="{{ url_for('users.signup') }}" class="create an account ">Create an Account</a></span> 
             
             </form>
             </div>

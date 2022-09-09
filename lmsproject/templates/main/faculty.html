@@ -5,12 +5,12 @@
   <div class="d-flex ml-auto flex-column flex-lg-row align-item-center">              
    <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="{{ url_for('profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="{{ url_for('users.profile')}}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="{{ url_for('static',filename='images/profile.gif')}}" width="50" height="50" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{{ url_for('profile')}}">View Profile</a>
-        <a class="dropdown-item" href="{{ url_for('logout')}}">Log Out</a>
+        <a class="dropdown-item" href="{{ url_for('users.profile')}}">View Profile</a>
+        <a class="dropdown-item" href="{{ url_for('users.logout')}}">Log Out</a>
         </div>
       </li>   
     </ul>
@@ -84,7 +84,7 @@
     </div>
 
     <div class="col-lg-3 col-sm-6">
-      <a href="{{ url_for('semester') }}">
+      <a href="{{ url_for('main.semester') }}">
         <div class="card1">
           <img class="card-img-top" src="{{ url_for('static',filename='images/it.gif') }}" alt="Card image cap">
           <div class="card-body">
