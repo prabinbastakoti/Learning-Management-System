@@ -44,10 +44,15 @@ def signup():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        if form.gender.data =='Male':
+            image_file = (os.path.basename("/static/images/profile_pics/"+ "male.svg"))
+        elif form.gender.data =="Female":
+            image_file = (os.path.basename("/static/images/profile_pics/"+ "female.svg"))
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(firstname = form.firstname.data, lastname = form.lastname.data, email = form.email.data,\
                     birthdate=form.birthdate.data,gender=form.gender.data, phonenumber=form.phonenumber.data, password = hashed_password, \
-                        address=form.address.data,university=form.university.data,college=form.college.data,regnum=form.regnum.data,)
+                        address=form.address.data,university=form.university.data,college=form.college.data,regnum=form.regnum.data,
+                        image_file=image_file)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in','success')
