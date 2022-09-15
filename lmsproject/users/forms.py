@@ -113,7 +113,7 @@ class RequestResetForm(FlaskForm):
 
 class ResetPasswordForm(FlaskForm):
 
-    password = PasswordField('Password',validators=[DataRequired(),Length(8)])
+    password = PasswordField('New Password',validators=[DataRequired(),Length(8)])
 
     confirmpassword = PasswordField('Confirm Password',
                                     validators=[DataRequired(),EqualTo('password')])
