@@ -39,7 +39,7 @@ def signup():
         elif form.gender.data =="Female":
             image_file = (os.path.basename("/static/images/profile_pics/"+ "female.svg"))
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(firstname = form.firstname.data, lastname = form.lastname.data, email = form.email.data,\
+        user = User(username=form.username.data, firstname = form.firstname.data, lastname = form.lastname.data, email = form.email.data,\
                     birthdate=form.birthdate.data,gender=form.gender.data, phonenumber=form.phonenumber.data, password = hashed_password, \
                         address=form.address.data,university=form.university.data,college=form.college.data,regnum=form.regnum.data,
                         image_file=image_file)
