@@ -9,6 +9,91 @@ from lmsproject.users.utils import save_picture, send_reset_email
 
 users = Blueprint('users', __name__)
 
+
+@users.route('/editprofile', methods=["GET","POST"])
+@login_required
+def editprofile():
+    
+    form = EditProfileForm()
+    if request.method == 'POST':
+
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+
+        current_user.username = form.username.data
+        current_user.firstname = form.firstname.data
+        current_user.lastname = form.lastname.data
+        current_user.birthdate = form.birthdate.data
+        current_user.gender = form.gender.data
+        current_user.email = form.email.data
+        current_user.phonenumber = form.phonenumber.data
+        current_user.address = form.address.data
+        db.session.commit()
+        flash('Your account has been updated!','success')
+        return redirect(url_for('users.profile'))
+
+    elif request.method == 'GET':
+
+        form.username.data = current_user.username
+        form.firstname.data = current_user.firstname
+        form.lastname.data = current_user.lastname
+        form.gender.data = current_user.gender
+        form.email.data = current_user.email
+        form.phonenumber.data = current_user.phonenumber
+        form.address.data = current_user.address
+    flash('Updating your Personal Information is currently not available. We are working on it.','warning')
+    image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
+    return render_template('users/editprofile.html',title='Edit profile',
+                            image_file = image_file,form=form)
+
+
+@users.route('/editprofile2', methods=["GET","POST"])
+@login_required
+def editprofile2():
+    flash('Updating your Academic Information is currently not available. We are working on it.','warning')
+    form = EditProfileForm()
+    return render_template('users/editprofile2.html',title='Edit profile',
+                            form=form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @users.route('/login',methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:
@@ -70,9 +155,9 @@ def profile():
 
 
 
-@users.route('/editprofile',methods=['GET','POST'])
+@users.route('/test',methods=['GET','POST'])
 @login_required
-def editprofile():
+def test():
     form = EditProfileForm()
     if form.validate_on_submit():
         
@@ -91,7 +176,7 @@ def editprofile():
         form.email.data = current_user.email
 
     image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
-    return render_template('users/editprofile.html',title='Edit Profile',
+    return render_template('users/test.html',title='test',
                              image_file = image_file ,form = form)
 
 

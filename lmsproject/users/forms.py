@@ -72,14 +72,35 @@ class LoginForm(FlaskForm):
 
 
 class EditProfileForm(FlaskForm):
-    phonenumber= StringField('Phone Number', validators=[DataRequired(),Length(min=10,max=20)])
+
+    picture = FileField('Update New Image', validators=[FileAllowed(['jpg','png'])])
+
+    submit = SubmitField('Save Changes')
+
+    username = StringField('Username',
+                            validators=[DataRequired()])
+
+    firstname = StringField('First Name',
+                            validators=[DataRequired(),Length(min=2,max=20)])
+    lastname = StringField('Last Name',
+                            validators=[DataRequired(),Length(min=2,max=20)])
+
+    birthdate = DateField('Date Of Birth',format='%Y-%m-%d',validators=[DataRequired()])
+
+    gender = RadioField('Gender',validators=[DataRequired()], choices = [('Male','Male'),('Female','Female')],default='Male')
 
     email = StringField('Email Address',
                         validators= [DataRequired(), Email()])
 
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png'])])
+    phonenumber= StringField('Phone Number', validators=[DataRequired(),Length(min=10,max=20)])
 
-    submit = SubmitField('Update')
+    address= StringField('Address', validators=[DataRequired()])
+
+    university= StringField('University Name', validators=[DataRequired()])
+
+    college= StringField('College Name', validators=[Optional()])
+
+    regnum= StringField('Regd. No.', validators=[Optional()])
 
     
 
