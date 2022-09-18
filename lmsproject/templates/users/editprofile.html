@@ -103,20 +103,25 @@
             <!-- Profile picture help block-->
             <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
             <!-- Profile picture upload button-->
-            <form method="POST" action="" enctype="multipart/form-data">
-              {{ form.hidden_tag() }}
+            
                 <div class="hero_btn-continer1">
-                  <label class=" call_to-btn btn_white-border ">
-                    {{ form.picture.label }}
-                    {{ form.picture(class="form-control-file visually-hidden") }}
-                    {% if form.picture.errors %}
-                      {% for error in form.picture.errors %}
-                          <span class="text-danger">{{ error }}</span></br>
-                      {% endfor %}
-                    {% endif %}
-                  </label>
+                  <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="hero_btn-continer1">
+                      <label class=" call_to-btn btn_white-border ">
+                        {{ form.picture.label }}
+                        {{ form.picture(class="form-control-file visually-hidden") }}
+                      </label>
+                    </div>
+                        {% if form.picture.errors %}
+                          {% for error in form.picture.errors %}
+                              <span class="text-danger">{{ error }}</span></br>
+                          {% endfor %}
+                        {% endif %}
+                      
+                    
+
                 </div>
-            </form>
           </div>
         </div>
       </div>
@@ -128,8 +133,6 @@
           <div class="card-body">                  
                 <!-- Form Group (username)-->                        
                 <div class="mb-3">
-                  <form method="POST" action="" enctype="multipart/form-data">
-                    {{ form.hidden_tag() }}
                     <label class="small mb-1" name="username"><h5>{{ form.username.label }}</h5></label>                            
                     {% if form.username.errors %}
                       {{ form.username(class="form-control is-invalid") }}
@@ -263,7 +266,7 @@
                 </div>
                 
                   {{ form.submit(class="button call_to-btn btn_white-border") }}
-              
+              </div></div></div></div></div>
             </form>               
             </div>
         </div>

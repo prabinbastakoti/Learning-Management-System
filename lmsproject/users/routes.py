@@ -5,7 +5,7 @@ from lmsproject import db, bcrypt
 from lmsproject.models import User, Post
 from lmsproject.users.forms import (RegistrationForm, LoginForm, EditProfileForm1, RequestResetForm, ResetPasswordForm)
 from lmsproject.users.utils import save_picture, send_reset_email
-from wtforms.validators import ValidationError
+from werkzeug.datastructures import CombinedMultiDict
 
 
 users = Blueprint('users', __name__)
@@ -14,11 +14,10 @@ users = Blueprint('users', __name__)
 @users.route('/editprofile', methods=['GET','POST'])
 @login_required
 def editprofile():  
-    form = EditProfileForm1(request.form)
 
-    if form.validate_on_submit():
+    form = EditProfileForm1(CombinedMultiDict((request.files, request.form)))
 
-        
+    if request.method =='POST' and form.validate_on_submit():
 
         current_user.username = form.username.data
         current_user.email = form.email.data
@@ -51,6 +50,7 @@ def editprofile():
         form.email.data = current_user.email
         form.phonenumber.data = current_user.phonenumber
         form.address.data = current_user.address
+
     image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
     return render_template('users/editprofile.html',title='Edit profile',
                             image_file=image_file, form=form)
