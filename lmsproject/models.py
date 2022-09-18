@@ -10,7 +10,7 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username= db.Column(db.String(20),nullable=True)
+    username= db.Column(db.String(20),unique=True,nullable=False)
     firstname = db.Column(db.String(20), nullable= False)
     lastname = db.Column(db.String(20), nullable= False)
     email = db.Column(db.String(100),unique=True,nullable=False)
@@ -42,7 +42,7 @@ class User(db.Model, UserMixin):
 
 
     def __repr__(self):
-        return f"User('{self.firstname}','{self.lastname}','{self.email}','{self.image_file}')"
+        return f"User('{self.username}', '{self.email}', '{self.phonenumber}' ,'{self.image_file}')"
 
     
 class Post(db.Model):

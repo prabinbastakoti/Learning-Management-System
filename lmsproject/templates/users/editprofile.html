@@ -83,246 +83,281 @@
     {% endif %}
   {% endwith %}
 
-<div class="container-xl px-4 mt-4">
+  <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
       <a class="nav-link active ms-0" >Personal Information</a>
       <a class="nav-link" href="{{ url_for('users.editprofile2') }}" >Academic Information</a>
       
-  </nav>
-  <!--
-    <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="#" target="__blank">Profile</a>
-        <a class="nav-link" href="#" target="__blank">Timeline</a>
-    </nav>-->
+    </nav>
+
     <hr class="mt-0 mb-4">
-    <div class="row  align-items-start">
- 
-                    
-        <div class="col-xl-4">
-            <!-- Profile picture card-->
-            <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
-                    <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" src="{{ image_file }}" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <form method="POST" action="" enctype="multipart/form-data">
-                      {{ form.hidden_tag() }}
-                      <div class="hero_btn-continer1">
-                        <label class=" call_to-btn btn_white-border ">
-                          {{ form.picture.label }}
-                          {{ form.picture(class="form-control visually-hidden") }}
-                      </label>
+    <div class="row  align-items-start">             
+      <div class="col-xl-4">
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0">
+          <div class="card-header">Profile Picture</div>
+          <div class="card-body text-center">
+            <!-- Profile picture image-->
+            <img class="img-account-profile rounded-circle mb-2" src="{{ image_file }}" alt="">
+            <!-- Profile picture help block-->
+            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+            <!-- Profile picture upload button-->
+            <form method="POST" action="" enctype="multipart/form-data">
+              {{ form.hidden_tag() }}
+                <div class="hero_btn-continer1">
+                  <label class=" call_to-btn btn_white-border ">
+                    {{ form.picture.label }}
+                    {{ form.picture(class="form-control-file visually-hidden") }}
+                    {% if form.picture.errors %}
+                      {% for error in form.picture.errors %}
+                          <span class="text-danger">{{ error }}</span></br>
+                      {% endfor %}
+                    {% endif %}
+                  </label>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-8">
+        <!-- Account details card-->
+        <div class="card mb-4">
+          <div class="card-header">Account Details</div>
+          <div class="card-body">                  
+                <!-- Form Group (username)-->                        
+                <div class="mb-3">
+                  <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <label class="small mb-1" name="username"><h5>{{ form.username.label }}</h5></label>                            
+                    {% if form.username.errors %}
+                      {{ form.username(class="form-control is-invalid") }}
+                      <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
                       </div>
-                    
-                    
-                    
-                 
-                   
-
+                    {% else %}
+                      {{ form.username(class="form-control", placeholder=current_user.username) }}
+                    {% endif %}
+                
                 </div>
-            </div>
-        </div>
-        <div class="col-xl-8">
-            <!-- Account details card-->
-            <div class="card mb-4">
-                <div class="card-header">Account Details</div>
-                <div class="card-body">
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (first name)-->
+                  <div class="col-md-6">
                     
-                        <!-- Form Group (username)-->
-                        
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername"><h5>{{ form.username.label }}</h5></label>
-                            {{ form.username(class="form-control", placeholder=current_user.username) }}
+                      <label class="small mb-1" for="inputFirstName"><h5>{{ form.firstname.label }}</h5></label>
+                      {% if form.firstname.errors %}
+                        {{ form.firstname(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.firstname.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
                         </div>
-
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (first name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName"><h5>{{ form.firstname.label }}</h5></label>
-                                {{ form.firstname(class="form-control", placeholder=current_user.firstname) }}
-                            </div>
-                            <!-- Form Group (last name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName"><h5>{{ form.lastname.label }}</h5></label>
-                                {{ form.lastname(class="form-control", placeholder=current_user.lastname) }}
-                            </div>
-                        </div>
-
-                        <!-- Form Row        -->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group ( Birthday)-->
-                            <div class="col-md-6">
-                              <label class="small mb-1" for="inputbirthdate"><h5>{{ form.birthdate.label }}</h5></label>
-                              {{ form.birthdate(class="form-control", value=current_user.birthdate) }}
-
-                            
-
-                            </div>
-
-                            <!-- Form Group (Gender)-->
-                            <div class="col-md-6">
-                              <label class="small mb-1" for="inputGender"><h5>{{ form.gender.label }}</h5></label>
-                            </br>
-                              {% for subfield in form.gender %}
-                                <label class="radio-container m-r-45 mb-1">
-                                  
-                                    <td>{{ subfield(class="form-check-input") }}</td>
-                                    <td>{{ subfield.label }}</td>
-                                  
-                                  <span class="checkmark"></span>
-                                    
-                                </label></br>
-                                  
-                              {% endfor %}  
-                              
-                                                                                                     
-                            </div>
-                          </div>
-                         
-
-                        <!-- Form Group ( Email)-->
-                          <div class="row gx-3 mb-3">
-                            <div class="col-md-6">
-                          <label class="small mb-1" for="inputEmailAddress"><h5>{{ form.email.label }}</h5></label>
-                          {{ form.email(class="form-control", placeholder=current_user.email) }}
-                          </div>
-                          <!-- Form Group (phone number )-->
-                          <div class="col-md-6">
-                            <label class="small mb-1" for="inputPhone"><h5>{{ form.phonenumber.label }}</h5></label>
-                            {{ form.phonenumber(class="form-control", placeholder=current_user.phonenumber) }}
-                        </div>
-                        </div>
-
-                        <!-- Form Group ( address)-->
-                        <div class="mb-3">
-                        
-                          <label class="small mb-1" for="inputLocation"><h5>{{ form.address.label }}</h5></label>
-                          {{ form.address(class="form-control", placeholder=current_user.address) }}
-                       
-                       </div>
-                      <!-- Form Group (registration No)-->
-                      
-                     
-                      
-                       
-                      
-                        <div class="row gx-3 mb-3">
-                            
-                        </div>
-                        
-                        <!-- Save changes button-->
-                        {{ form.submit(class="button call_to-btn btn_white-border") }}
-                        
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-</div>
-
-
-      <!-- end contact section -->
-      <section class="info_section layout_padding-top">
-        <div class="info_logo-box">
-          <h2>
-              SHIKSHYALAYA
-          </h2>
-        </div>
-          <div class="container layout_padding2">
-            <div class="row">
-              <div class="col-md-3">
-                <h5>
-                    About Us                                                                             
-                </h5>
-               <p>
-                ShikshyaLaya is an online Platform trying to Democratise access to data & information every student needs. 
-              </p>
-              </div>
-              <div class="col-md-3">
-                <h5>
-                    Useful Link 
-                </h5>
-                <ul>
-                  <li>
-                    <a href="">
-                        Video games
-                    </a>
-                  </li>
-                  <li>
-                   <a href="">
-                      Remote control
-                   </a>
-                  </li>
-                  <li>
-                    <a href="">
-                        3d controller
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h5>
-                    Contact Us
-                </h5>
-                <p>
-                +977-9842640050<br>
-                +977-9749459505<br>
-                Bharatpur, Chitwan, Nepal
-                </p>
-              </div>
-              <div class="col-md-3">
-           
-                <div class="subscribe_container">
-                  <h5>
-                      Newsletter
-                  </h5>
-                  <div class="form_container">
-                    <form action="">
-                      <input type="email" placeholder="Enter your email">
-                      <button type="submit">
-                        Subscribe
-                      </button>
-                    </form>
+                      {% else %}
+                        {{ form.firstname(class="form-control", placeholder=current_user.firstname) }}
+                      {% endif %} 
+                                               
                   </div>
+                  <!-- Form Group (last name)-->
+                  <div class="col-md-6">
+                    
+                      <label class="small mb-1" for="inputLastName"><h5>{{ form.lastname.label }}</h5></label>
+                      {% if form.lastname.errors %}
+                        {{ form.lastname(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.lastname.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                        {{ form.lastname(class="form-control", placeholder=current_user.lastname) }}
+                      {% endif %} 
+                             
+                  </div>
+                </div>
+                <!-- Form Row        -->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group ( Birthday)-->
+                  <div class="col-md-6">
+                    
+                      <label class="small mb-1" for="inputbirthdate"><h5>{{ form.birthdate.label }}</h5></label>
+                      {% if form.birthdate.errors %}
+                        {{ form.birthdate(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.birthdate.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                        {{ form.birthdate(class="form-control", value=current_user.birthdate) }}
+                      {% endif %}
+                 
+                  </div>
+                  <!-- Form Group (Gender)-->
+                  <div class="col-md-6">
+                    
+                      <label class="small mb-1" for="inputGender"><h5>{{ form.gender.label }}</h5></label>
+                      </br>
+                      {% for subfield in form.gender %}
+                        <label class="radio-container m-r-45 mb-1">
+                          <td>{{ subfield(class="form-check-input") }}</td>
+                          <td>{{ subfield.label }}</td>
+                          <span class="checkmark"></span>                    
+                        </label></br>                                  
+                      {% endfor %} 
+                                                                                                                    
+                  </div>
+                </div>                         
+                <!-- Form Group ( Email)-->
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6">
+                    
+                      <label class="small mb-1" name="email"><h5>{{ form.email.label }}</h5></label>
+                      {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                        {{ form.email(class="form-control", placeholder=current_user.email) }}
+                      {% endif %}
+             
+                  </div>
+                  <!-- Form Group (phone number )-->
+                  <div class="col-md-6">
+                    
+                      <label class="small mb-1" for="inputPhone"><h5>{{ form.phonenumber.label }}</h5></label>
+                      {% if form.phonenumber.errors %}
+                        {{ form.phonenumber(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                            {% for error in form.phonenumber.errors %}
+                              <span>{{ error }}</span>
+                            {% endfor %}
+                          </div>
+                      {% else %}
+                        {{ form.phonenumber(class="form-control", placeholder=current_user.phonenumber) }}
+                      {% endif %}
+       
+                  </div>
+                </div>
+                <!-- Form Group ( address)-->
+                <div class="mb-3"> 
+                                        
+                    <label class="small mb-1" for="inputLocation"><h5>{{ form.address.label }}</h5></label>
+                    {% if form.address.errors %}
+                      {{ form.address(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.address.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                      {{ form.address(class="form-control", placeholder=current_user.address) }}
+                    {% endif %}
+    
                 </div>
                 
-              </div>
+                  {{ form.submit(class="button call_to-btn btn_white-border") }}
+              
+            </form>               
             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- end contact section -->
+  <section class="info_section layout_padding-top">
+    <div class="info_logo-box">
+      <h2>
+        SHIKSHYALAYA
+      </h2>
+    </div>
+    <div class="container layout_padding2">
+      <div class="row">
+        <div class="col-md-3">
+          <h5>
+            About Us                                                                             
+          </h5>
+          <p>
+            ShikshyaLaya is an online Platform trying to Democratise access to data & information every student needs. 
+          </p>
+        </div>
+        <div class="col-md-3">
+          <h5>
+            Useful Link 
+          </h5>
+          <ul>
+            <li>
+              <a href="">
+                Video games
+              </a>
+            </li>
+            <li>
+              <a href="">
+                Remote control
+              </a>
+            </li>
+            <li>
+              <a href="">
+                3d controller
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>
+            Contact Us
+          </h5>
+          <p>
+          +977-9842640050<br>
+          +977-9749459505<br>
+          Bharatpur, Chitwan, Nepal
+          </p>
+        </div>
+        <div class="col-md-3">
+          <div class="subscribe_container">
+            <h5>
+              Newsletter
+            </h5>
+          <div class="form_container">
+            
+              <input type="email" placeholder="Enter your email">
+              <button type="submit">
+                Subscribe
+              </button>
+            
           </div>
-          <div class="container">
-              <div class="social_container">
-                 
-                  <div class="social-box">
-                    <a href="https://www.facebook.com/ShikshyaLaya-102935545883000">
-                      <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
-                    </a>
-      
-                    <a href="https://twitter.com/shikshya_laya">
-                      <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
-                    </a>
-                    <a href="https://www.linkedin.com/in/shikshya-laya-b1b11124b/">
-                      <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
-                    </a>
-                    <a href="https://www.instagram.com/shikshya.laya/">
-                      <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
-                    </a>
-                  </div>
-                </div>
-          </div>
-        </section>
+        </div>         
+      </div>
+      </div>
+      </div>
+    
+  
+    <div class="container">
+      <div class="social_container">            
+        <div class="social-box">
+          <a href="https://www.facebook.com/ShikshyaLaya-102935545883000">
+            <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
+          </a>
+          <a href="https://twitter.com/shikshya_laya">
+            <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
+          </a>
+          <a href="https://www.linkedin.com/in/shikshya-laya-b1b11124b/">
+            <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
+          </a>
+          <a href="https://www.instagram.com/shikshya.laya/">
+            <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- footer section -->
   <section class="container-fluid footer_section">
@@ -331,89 +366,88 @@
     </p>
   </section>
   <!-- footer section -->
-
   <script type="text/javascript" src="{{ url_for('static',filename='editprofile/js/jquery-3.4.1.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static',filename='editprofile/js/bootstrap.js') }}"></script>
   <style>
-body{
+    body{
 
-background-color:#ffffff;
+    background-color:#ffffff;
 
-}
-.img-account-profile {
-    height: 13rem;
-}
-.rounded-circle {
-    border-radius: 50% !important;
-}
-.card {
-  
-    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
-}
-.card .card-header {
-    font-weight: 500;
-    width:100%;
-    font-size: 20px;
-}
-.card-header:first-child {
-    border-radius: 0.35rem 0.35rem 0 0;
-}
-.card-header {
-    padding: 1rem 1.35rem;
-    margin-bottom: 0;
-    background-color: rgba(33, 40, 50, 0.03);
-    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
-}
-.smallmb-1 {
-font-size: 18px;
-}
-.form-control, .dataTable-input {
-    display: block;
-    width: 100%;
-    padding: 1rem 1rem;
+    }
+    .img-account-profile {
+        height: 13rem;
+    }
+    .rounded-circle {
+        border-radius: 50% !important;
+    }
+    .card {
+      
+        box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+    }
+    .card .card-header {
+        font-weight: 500;
+        width:100%;
+        font-size: 20px;
+    }
+    .card-header:first-child {
+        border-radius: 0.35rem 0.35rem 0 0;
+    }
+    .card-header {
+        padding: 1rem 1.35rem;
+        margin-bottom: 0;
+        background-color: rgba(33, 40, 50, 0.03);
+        border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+    }
+    .smallmb-1 {
     font-size: 18px;
-    font-weight: 400;
-    line-height: 1;
-    color:#3C4852;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #c5ccd6;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0.35rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+    }
+    .form-control, .dataTable-input {
+        display: block;
+        width: 100%;
+        padding: 1rem 1rem;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1;
+        color:#3C4852;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #c5ccd6;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.35rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
 
-.nav-borders .nav-link.active {
-  color: #08bd80;
-    border-bottom-color: #08bd80;
-}
-.nav-borders .nav-link {
-    color: #69707a;
-    border-bottom-width: 0.125rem;
-    border-bottom-style: solid;
-    border-bottom-color: transparent;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    font-size: 18px;
-}
-.nav-tabs .nav-link.active {
-    color: #0061f2;
-   
-}
+    .nav-borders .nav-link.active {
+      color: #08bd80;
+        border-bottom-color: #08bd80;
+    }
+    .nav-borders .nav-link {
+        color: #69707a;
+        border-bottom-width: 0.125rem;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        font-size: 18px;
+    }
+    .nav-tabs .nav-link.active {
+        color: #0061f2;
+      
+    }
 
-[hidden] {
-  display: none !important;
-}
+    [hidden] {
+      display: none !important;
+    }
   </style>
  
   <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 
 </html>

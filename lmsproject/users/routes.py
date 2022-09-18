@@ -3,38 +3,47 @@ from flask import (render_template, url_for,flash, redirect, request, Blueprint)
 from flask_login import login_user, current_user, logout_user, login_required
 from lmsproject import db, bcrypt
 from lmsproject.models import User, Post
-from lmsproject.users.forms import (RegistrationForm, LoginForm, EditProfileForm, RequestResetForm, ResetPasswordForm)
+from lmsproject.users.forms import (RegistrationForm, LoginForm, EditProfileForm1, RequestResetForm, ResetPasswordForm)
 from lmsproject.users.utils import save_picture, send_reset_email
+from wtforms.validators import ValidationError
 
 
 users = Blueprint('users', __name__)
 
 
-@users.route('/editprofile', methods=["GET","POST"])
+@users.route('/editprofile', methods=['GET','POST'])
 @login_required
-def editprofile():
-    
-    form = EditProfileForm()
-    if request.method == 'POST':
+def editprofile():  
+    form = EditProfileForm1(request.form)
 
-        if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+    if form.validate_on_submit():
+
+        
 
         current_user.username = form.username.data
+        current_user.email = form.email.data
+        current_user.phonenumber = form.phonenumber.data
         current_user.firstname = form.firstname.data
         current_user.lastname = form.lastname.data
         current_user.birthdate = form.birthdate.data
         current_user.gender = form.gender.data
-        current_user.email = form.email.data
-        current_user.phonenumber = form.phonenumber.data
         current_user.address = form.address.data
+
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+        elif form.picture.data is None:
+            if current_user.image_file in ['male.svg','female.svg']:
+                if form.gender.data =='Male':
+                    current_user.image_file = (os.path.basename("/static/images/profile_pics/"+ "male.svg"))
+                elif form.gender.data =="Female":
+                    current_user.image_file = (os.path.basename("/static/images/profile_pics/"+ "female.svg"))
+
         db.session.commit()
         flash('Your account has been updated!','success')
-        return redirect(url_for('users.profile'))
+        return redirect(url_for("users.profile"))
 
     elif request.method == 'GET':
-
         form.username.data = current_user.username
         form.firstname.data = current_user.firstname
         form.lastname.data = current_user.lastname
@@ -42,13 +51,33 @@ def editprofile():
         form.email.data = current_user.email
         form.phonenumber.data = current_user.phonenumber
         form.address.data = current_user.address
-    flash('Updating your Personal Information is currently not available. We are working on it.','warning')
     image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
     return render_template('users/editprofile.html',title='Edit profile',
-                            image_file = image_file,form=form)
+                            image_file=image_file, form=form)
 
 
-@users.route('/editprofile2', methods=["GET","POST"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@users.route('/editprofile2',methods=['GET','POST'])
 @login_required
 def editprofile2():
     flash('Updating your Academic Information is currently not available. We are working on it.','warning')
