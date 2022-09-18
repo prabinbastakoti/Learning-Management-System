@@ -61,11 +61,19 @@ def editprofile():
 
 
 
+@users.route("/editprofile/deletephoto", methods=['POST'])
+@login_required
+def delete_photo():
+    
+    if current_user.gender == 'Male':
+        current_user.image_file = (os.path.basename("/static/images/profile_pics/"+ "male.svg"))
 
+    elif current_user.gender == "Female":
+        current_user.image_file = (os.path.basename("/static/images/profile_pics/"+ "female.svg"))
 
-
-
-
+    db.session.commit()
+    flash('Your Photo has been deleted!','success')
+    return redirect(url_for('users.profile'))
 
 
 
@@ -81,9 +89,9 @@ def editprofile():
 @login_required
 def editprofile2():
     flash('Updating your Academic Information is currently not available. We are working on it.','warning')
-    form = EditProfileForm()
+    
     return render_template('users/editprofile2.html',title='Edit profile',
-                            form=form)
+                            )
 
 
 
@@ -178,35 +186,6 @@ def profile():
     image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
     return render_template('users/profile.html',title='Profile',
                              image_file = image_file)
-
-
-
-
-
-
-@users.route('/test',methods=['GET','POST'])
-@login_required
-def test():
-    form = EditProfileForm()
-    if form.validate_on_submit():
-        
-        if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
-
-        current_user.phonenumber = form.phonenumber.data
-        current_user.email = form.email.data
-        db.session.commit()
-        flash('Your account has been updated!','success')
-        return redirect(url_for('users.profile'))
-
-    elif request.method == 'GET':
-        form.phonenumber.data = current_user.phonenumber
-        form.email.data = current_user.email
-
-    image_file = url_for('static',filename='images/profile_pics/'+ current_user.image_file )
-    return render_template('users/test.html',title='test',
-                             image_file = image_file ,form = form)
 
 
 @users.route("/user/<string:email>",methods=['GET','POST'])

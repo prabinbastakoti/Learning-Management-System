@@ -100,19 +100,19 @@ class EditProfileForm1(FlaskForm):
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
-                raise ValidationError('That username is taken. Please choose a different one.')
+                raise ValidationError('An account with that username already exists. Please choose a different one.')
 
     def validate_email(self, email):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That email is taken. Please choose a different one.')
+                raise ValidationError('An account with that email already exists. Please choose a different one.')
                 
     def validate_phonenumber(self, phonenumber):
         if phonenumber.data != current_user.phonenumber:
             user = User.query.filter_by(phonenumber=phonenumber.data).first()
             if user:
-                raise ValidationError('That phonenumber is taken. Please choose a different one.')
+                raise ValidationError('An account with that phonenumber already exists. Please choose a different one.')
 
 
 
