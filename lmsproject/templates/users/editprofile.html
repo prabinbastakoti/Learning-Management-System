@@ -51,9 +51,29 @@
   <link rel="icon" 
   type="image/png" 
   href="{{ url_for('static',filename='images/graduation-cap.png') }}">
+  
 </head>
 
 <body>
+  <style>
+    .image-preview {
+        width:300px;
+        min-height: 100px;
+        border: 2px solid #dddddd;
+        margin-top: 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #cccccc;
+    }
+    .image-preview__image {
+      display: none;
+      width: 100%;
+
+    }
+  </style>
   <div class="top_container">
       <!-- header section strats -->
       <header class="header_section">
@@ -128,13 +148,20 @@
                       <label class=" call_to-btn btn_white-border ">
                         {{ form.picture.label }}
                         {{ form.picture(class="form-control-file visually-hidden") }}
+                        
                       </label>
                     </div>
-                        {% if form.picture.errors %}
-                          {% for error in form.picture.errors %}
-                              <span class="text-danger">{{ error }}</span></br>
-                          {% endfor %}
-                        {% endif %}
+                    {% if form.picture.errors %}
+                      {% for error in form.picture.errors %}
+                          <span class="text-danger">{{ error }}</span></br>
+                      {% endfor %}
+                    {% endif %}
+
+                    <div class="image-preview" id="imagePreview">
+                      <img src="" alt="Image Preview" class="image-preview__image">
+                      <span class="image_preview__default-text">Image Preview</span>
+                    </div>
+
                         {% if current_user.image_file in ['male.svg','female.svg'] %}
                         {% else %}
                           <div class="hero_btn-continer1">
@@ -481,6 +508,36 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script>
+    const picture = document.getElementById("picture");
+    const previewContainer = document.getElementById("imagePreview");
+    const previewImage = previewContainer.querySelector(".image-preview__image");
+    const previewDefaultText =previewContainer.querySelector(".image-preview__default-text");
+
+    picture.addEventListener("change",function() {
+      const file = this.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        previewImage.style.display = "block";
+
+        reader.addEventListener("load",function() {
+          previewImage.setAttribute("src",this.result);
+        });
+
+        reader.readAsDataURL(file);
+      } else {
+
+        previewImage.style.display = null;
+        previewImage.setAttribute("src","");
+      }
+
+    });
+
+  </script>
+
 </body>
 
 </html>
