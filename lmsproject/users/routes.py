@@ -56,11 +56,6 @@ def editprofile():
                             image_file=image_file, form=form)
 
 
-
-
-
-
-
 @users.route("/editprofile/deletephoto", methods=['POST'])
 @login_required
 def delete_photo():
@@ -73,15 +68,7 @@ def delete_photo():
 
     db.session.commit()
     flash('Your Photo has been deleted!','success')
-    return redirect(url_for('users.profile'))
-
-
-
-
-
-
-
-
+    return redirect(url_for('users.editprofile'))
 
 
 
@@ -90,45 +77,8 @@ def delete_photo():
 def editprofile2():
     flash('Updating your Academic Information is currently not available. We are working on it.','warning')
     
-    return render_template('users/editprofile2.html',title='Edit profile',
-                            )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return render_template('users/editprofile2.html',title='Edit profile')
+                            
 
 
 @users.route('/login',methods=['GET','POST'])
