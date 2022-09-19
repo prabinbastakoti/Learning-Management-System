@@ -58,7 +58,7 @@ body {
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #dc3545;
   --bs-btn-disabled-border-color: #dc3545;
-  background-color: #D11A2A;
+  background-color: #dc3545;
 }
 .call_to-btn1 {
 display: inline-grid;

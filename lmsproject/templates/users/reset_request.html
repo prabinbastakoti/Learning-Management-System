@@ -30,65 +30,79 @@
     
   </head>
   <body>
-  
+    <div class="top_container">
+        <!-- header section starts -->
+        <header class="header_section">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+              <a class="navbar-brand" href="{{ url_for('main.home') }}">           
+                  <img src="{{ url_for('static',filename='images/logo.png') }}">         
+              </a>
+    
+            </nav>
+          </div>
+        </header>
+    </div>
 
   
     <div class="content">
-    <div class="container">
-        <div class="row">
-        <div class="col-md-6 order-md-2">
-            <img src="{{ url_for('static',filename='login/images/undraw_file_sync_ot38.svg') }}" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-md-6 contents">
-            <div class="row justify-content-center">
-            <div class="col-md-8">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                                <span>{{ message }}</span>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-                <div class="mb-4">
-                <h3>Sign In to <div class="title">Shikshya</div><div class="title1">Laya</div></h3>
-                <p class="mb-4">Built for Everyone</p>
-            </div>
-            <form method="POST" action="" >
-                {{ form.hidden_tag() }}
-                  <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Reset Password</legend>
-                      <div class="form-group first">
-                          {{ form.email.label(class="form-control-label") }}
-                          {% if form.email.errors %}
-                              {{ form.email(class="form-control form-control-lg is-invalid") }}
-                              <div class="invalid-feedback">
-                                  {% for error in form.email.errors %}
-                                      <span>{{ error }}</span>
-                                  {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 order-md-2">
+                    <img src="{{ url_for('static',filename='images/forgotpassword.svg') }}" alt="Image" class="img-fluid1">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                    {% for category, message in messages %}
+                                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                            <span>{{ message }}</span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                
+           
+                            <form method="POST" action="" >
+                                {{ form.hidden_tag() }}
+                                <fieldset class="form-group">
+                                    <legend class="border-bottom mb-4">Forget Password</legend>
+                                    <p1>Please enter your email address. You will receive a link to create a new password via email.</p1>
+                                <br><br>
+                                    <div class="form-group first">
+                                        {{ form.email.label(class="form-control-label required") }}
+                                        {% if form.email.errors %}
+                                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.email.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
 
-                              </div>
-                          {% else %}
-                              {{ form.email(class="form-control form-control-lg") }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.email(class="form-control form-control-lg") }}
 
-                          {% endif %}
-                      </div>                                           
-                  </fieldset>
-            
-                  {{ form.submit(class="btn text-white btn-block btn-primary") }}
-            
-            </form>
+                                        {% endif %}
+                                        <style>
+                                            .required:after {
+                                                content:" *";
+                                                color: red;
+                                            }
+                                        </style>
+                                    </div>                                           
+                                </fieldset>
+                                {{ form.submit(class="btn text-white btn-block btn-primary") }}
+                            </form>
+                        </div>
+                    </div>
+                </div>       
             </div>
-            </div>
-            
         </div>
-        
-        </div>
-    </div>
     </div>
 
   

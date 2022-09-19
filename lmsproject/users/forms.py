@@ -118,10 +118,10 @@ class EditProfileForm1(FlaskForm):
 
 class RequestResetForm(FlaskForm):
 
-    email = StringField('Email Address',
+    email = StringField('Enter Your Email Address',
                         validators= [DataRequired(), Email()])
 
-    submit = SubmitField('Request Password Reset')
+    submit = SubmitField('Forget Password')
                     
     def validate_email(self, email):
         user = User.query.filter_by(email = email.data).first()
