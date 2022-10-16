@@ -3,7 +3,8 @@ from flask import (render_template, url_for,flash, redirect, request, Blueprint)
 from flask_login import login_user, current_user, logout_user, login_required
 from lmsproject import db, bcrypt
 from lmsproject.models import User, Post
-from lmsproject.users.forms import (RegistrationForm, LoginForm, EditProfileForm1, RequestResetForm, ResetPasswordForm)
+from lmsproject.users.forms import (RegistrationForm, LoginForm, EditProfileForm1, EditProfileForm2,
+                                    RequestResetForm, ResetPasswordForm)
 from lmsproject.users.utils import save_picture, send_reset_email
 from werkzeug.datastructures import CombinedMultiDict
 
@@ -75,9 +76,87 @@ def delete_photo():
 @users.route('/editprofile2',methods=['GET','POST'])
 @login_required
 def editprofile2():
-    flash('Updating your Academic Information is currently not available. We are working on it.','warning')
+    form = EditProfileForm2(CombinedMultiDict((request.files, request.form)))
+
+    if request.method =="POST" and form.validate_on_submit():
+        current_user.university = form.university.data
+        current_user.college = form.college.data
+        current_user.faculty = form.faculty.data
+        current_user.semester = form.semester.data
+        current_user.regnum = form.regnum.data
+        current_user.skill1 = form.skill1.data
+        current_user.skill2 = form.skill2.data
+        current_user.skill3 = form.skill3.data
+        current_user.skill4 = form.skill4.data
+        current_user.skill5 = form.skill5.data
+        current_user.skill6 = form.skill6.data
+        current_user.skill7 = form.skill7.data
+        current_user.skill8 = form.skill8.data
+        current_user.skill9 = form.skill9.data
+        current_user.skill10 = form.skill10.data
+
+        db.session.commit()
+        flash('Your account has been updated!','success')
+        return redirect(url_for("users.profile"))
+
+    elif request.method == "GET":
+        form.university.data = current_user.university
+        form.college.data = current_user.college
+        form.faculty.data = current_user.faculty
+        form.semester.data = current_user.semester
+        form.regnum.data = current_user.regnum
+
+        if current_user.skill1 == "1":
+            form.skill1.data = current_user.skill1
+        else:
+            form.skill1.data =  None
+
+        if current_user.skill2== "1":
+            form.skill2.data = current_user.skill2
+        else:
+            form.skill2.data =  None
+
+        if current_user.skill3== "1":
+            form.skill3.data = current_user.skill3
+        else:
+            form.skill3.data =  None
+
+        if current_user.skill4== "1":
+            form.skill4.data = current_user.skill4
+        else:
+            form.skill4.data =  None
+
+        if current_user.skill5== "1":
+            form.skill5.data = current_user.skill5
+        else:
+            form.skill5.data =  None
+
+        if current_user.skill6== "1":
+            form.skill6.data = current_user.skill6
+        else:
+            form.skill6.data =  None
+
+        if current_user.skill7== "1":
+            form.skill7.data = current_user.skill7
+        else:
+            form.skill7.data =  None
+
+        if current_user.skill8== "1":
+            form.skill8.data = current_user.skill8
+        else:
+            form.skill8.data =  None
+
+        if current_user.skill9== "1":
+            form.skill9.data = current_user.skill9
+        else:
+            form.skill9.data =  None
+
+        if current_user.skill10== "1":
+            form.skill10.data = current_user.skill10
+        else:
+            form.skill10.data =  None
     
-    return render_template('users/editprofile2.html',title='Edit profile')
+    return render_template('users/editprofile2.html',title='Edit profile',form=form)
                             
 
 

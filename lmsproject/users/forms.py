@@ -31,9 +31,9 @@ class RegistrationForm(FlaskForm):
 
     address= StringField('Address', validators=[DataRequired()])
 
-    university= StringField('University Name', validators=[DataRequired()])
+    university= StringField('University', validators=[DataRequired()])
 
-    college= StringField('College Name', validators=[Optional()])
+    college= StringField('College', validators=[Optional()])
 
     regnum= StringField('Regd. No.', validators=[Optional()])
 
@@ -58,6 +58,11 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(phonenumber = phonenumber.data).first()
         if user:
             raise ValidationError('Phonenumber is already used.')
+
+    def validate_regnum(self, regnum):
+        user = User.query.filter_by(regnum=regnum.data).first()
+        if user:
+            raise ValidationError('This Registration Number is associated with another Student. Please enter your valid Registration Number.')
 
 
 
@@ -113,6 +118,50 @@ class EditProfileForm1(FlaskForm):
             user = User.query.filter_by(phonenumber=phonenumber.data).first()
             if user:
                 raise ValidationError('An account with that phonenumber already exists. Please choose a different one.')
+
+
+class EditProfileForm2(FlaskForm):
+
+    university= StringField('University', validators=[DataRequired()])
+
+    college= StringField('College', validators=[Optional()])
+
+    faculty= StringField('Faculty', validators=[Optional()])
+
+    semester= StringField('Semester', validators=[Optional()])
+
+    college= StringField('College', validators=[Optional()])
+
+    regnum= StringField('Regd. No.', validators=[Optional()])
+
+    skill1= BooleanField('CyberSecurity',validators=[Optional()],default='0')
+
+    skill2= BooleanField('Cloud Computing',validators=[Optional()],default='0')
+
+    skill3= BooleanField('Data analytics and data science',validators=[Optional()],default='0')
+
+    skill4= BooleanField('Networking and wireless',validators=[Optional()],default='0')
+
+    skill5= BooleanField('Software Development',validators=[Optional()],default='0')
+
+    skill6= BooleanField('AI & Machine learning',validators=[Optional()],default='0')
+
+    skill7= BooleanField('Project management',validators=[Optional()],default='0')
+
+    skill8= BooleanField('Programming',validators=[Optional()],default='0')
+
+    skill9= BooleanField('IT service management',validators=[Optional()],default='0')
+
+    skill10= BooleanField('Virtualization',validators=[Optional()],default='0')
+
+    submit = SubmitField('Save Changes')
+
+
+    def validate_regnum(self, regnum):
+        if regnum.data != current_user.regnum:
+            user = User.query.filter_by(regnum=regnum.data).first()
+            if user:
+                raise ValidationError('This Registration Number is associated with another Student. Please enter your valid Registration Number.')
 
 
 

@@ -54,22 +54,18 @@
 
 <body>
   <div class="top_container">
-      <!-- header section strats -->
-      <header class="header_section">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{{ url_for('main.home') }}">
-              
-              <img src="{{ url_for('static',filename='images/logo.png') }}">
-              
-            </a>
-          </nav>
-
-        </div>
-
-      </header>
-      
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{{ url_for('main.home') }}">
+            <img src="{{ url_for('static',filename='images/logo.png') }}">
+          </a>
+        </nav>
+      </div>
+    </header>
   </div>
+
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
@@ -88,136 +84,134 @@
       <a class="nav-link" href="{{ url_for('users.editprofile') }}" >Personal Information</a>
       <a class="nav-link active ms-0" >Academic Information</a> 
     </nav>
-      <hr class="mt-0 mb-4">
-    
-      <!-- Payment methods card-->
-      <div class="card  mb-4">
-          <div class="card-header">
-              Academic Details
-              
-          </div>
-          <div class="card-body">
-            <form>
-              <!-- Payment method 1-->
-          
-            <div class="row gx-3 mb-3">
+    <hr class="mt-0 mb-4">
+    <!-- Payment methods card-->
+    <div class="card  mb-4">
+      <div class="card-header">
+        Academic Details
+      </div>
+      <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}          
+          <div class="row gx-3 mb-3">
             <div class="mb-3">
-                <label class="small mb-1" for="inputUniversityName"> <h5>University</h5></label>
-                <input class="form-control" id="inputUniversityName" type="text" placeholder="Enter your University Name" value="{{ current_user.university }}">
+              <label class="small mb-1" name="university"><h5>{{ form.university.label }}</h5></label>                            
+                {% if form.university.errors %}
+                  {{ form.university(class="form-control is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.university.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.university(class="form-control",placeholder=current_user.university) }}
+                {% endif %}
+            </div>
+                  
+            <div class="mb-3">
+              <label class="small mb-1" name="college"><h5>{{ form.college.label }}</h5></label>                            
+                {% if form.college.errors %}
+                  {{ form.college(class="form-control is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.college.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.college(class="form-control",placeholder=current_user.college) }}
+                {% endif %}
+            </div>
+                    
+            <div class="mb-3">
+              <label class="small mb-1" name="faculty"><h5>{{ form.faculty.label }}</h5></label>                            
+              {% if form.faculty.errors %}
+                {{ form.faculty(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.faculty.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
                 </div>
-                
-                
-                <div class="mb-3">
-                    <label class="small mb-1" for="inputCollegeName"> <h5>College</h5></label>   
-                    <input class="form-control" id="inputCollegeName" type="text" placeholder="Enter your College name" value="{{ current_user.college }}">
-                    </div>
-                    </div>
-                    
-               
-                
+              {% else %}
+                {{ form.faculty(class="form-control",placeholder=current_user.faculty) }}
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label class="small mb-1" name="semester"><h5>{{ form.semester.label }}</h5></label>                            
+              {% if form.semester.errors %}
+                {{ form.semester(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.semester.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.semester(class="form-control",placeholder=current_user.semester) }}
+              {% endif %}
+            </div>
 
+            <div class="mb-3">
+              <label class="small mb-1" name="regnum"><h5>{{ form.regnum.label }}</h5></label>                            
+              {% if form.regnum.errors %}
+                {{ form.regnum(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.regnum.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.regnum(class="form-control", placeholder=current_user.regnum) }}
+              {% endif %}
+            </div>                   
+            
+            <div class="mb-3">
+              <label class="small mb-1" for="inputSkills"> <h5>Skills</h5></label>
+              <div class="form-check">  
+                {{ form.skill1(class="form-check-input") }}
+                {{ form.skill1.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill2(class="form-check-input") }}
+                {{ form.skill2.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill3(class="form-check-input") }}
+                {{ form.skill3.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill4(class="form-check-input") }}
+                {{ form.skill4.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill5(class="form-check-input") }}
+                {{ form.skill5.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill6(class="form-check-input") }}
+                {{ form.skill6.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill7(class="form-check-input") }}
+                {{ form.skill7.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill8(class="form-check-input") }}
+                {{ form.skill8.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill9(class="form-check-input") }}
+                {{ form.skill9.label }}
+              </div>
+              <div class="form-check">  
+                {{ form.skill10(class="form-check-input") }}
+                {{ form.skill10.label }}
+              </div>
+              
+            </div>
+                </div>
+                {{ form.submit(class="button call_to-btn btn_white-border") }}
+            </form>
 
-
-
-
-
-                    
-         
-              <hr>
-              <!-- Payment method 2-->
-              <div class="row gx-3 mb-3">
-                <div class="mb-3">
-                    <label class="small mb-1" for="inputFacultyName"> <h5>Faculty</h5></label>
-                    <input class="form-control" id="inputFacultyName" type="text" placeholder="Enter your Faculty Name" value="">
-                    </div>
-                    
-                    
-                    <div class="mb-3">
-                        <label class="small mb-1" for="inputSemesterName"> <h5>Semester</h5></label>   
-                        <input class="form-control" id="inputSemesterName" type="text" placeholder="Enter your Semester name" value="">
-                        </div>
-                        </div>
-              <hr>
-              <div class="row gx-3 mb-3">
-                <div class="mb-3">
-                    <label class="small mb-1" for="inputRegistrationNumber"> <h5>Regd No</h5></label>
-                    <input class="form-control" id="inputRegistrationNumber" type="text" placeholder="Enter your Registration Number" value="{{ current_user.regnum }}">
-                    </div>
-                    
-                    
-                    <div class="mb-3">
-                      <label class="small mb-1" for="inputSkills"> <h5>Skills</h5></label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          CyberSecurity
-                        </label>
-                      </div>
-
-                    
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Cloud Computing
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Data analytics and data science
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Networking and wireless
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Software Development
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                         AI & Machine learning
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Project management
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                         Programming
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                         IT service management
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Virtualization
-                        </label>
-                      </div>
-                      
-
-                        </div>
-                        </div>
-                        <div class="hero_btn-continer1">
-                          <a href="D:\project learning management\fanadesh-html\login-form-08\login.html" class="call_to-btn btn_white-border" type="button">
-                         Save Changes
-                          </a>
-                        </div>
+            
 
 
             

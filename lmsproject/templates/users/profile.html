@@ -62,16 +62,39 @@
                 <div class="profile-work">
                     
                     <p>SKILLS</p>
-                    <a href="">Skill #1</a><br/>
-                    <a href="">Skill #2</a><br/>
-                    <a href="">Skill #3</a><br/>
-                    <a href="">Skill #4</a><br/>
-                    <a href="">Skill #5</a><br/>
-                    <a href="">Skill #6</a><br/>
-                    <a href="">Skill #7</a><br/>
-                    <a href="">Skill #8</a><br/>
-                    <a href="">Skill #9</a><br/>
-                    <a href="">Skill #10</a><br/>
+                    
+                    {% if current_user.skill1 in ['1'] %}                    
+                        <a href="">CyberSecurity</a><br/> 
+                    {% endif %}
+                    {% if current_user.skill2 in ['1'] %}                    
+                        <a href="">Cloud Computing</a><br/>
+                    {% endif %}
+                    {% if current_user.skill3 in ['1'] %}                    
+                        <a href="">Data analytics and data science</a><br/>
+                    {% endif %}
+                    {% if current_user.skill4 in ['1'] %}                    
+                        <a href="">Networking and wireless</a><br/>
+                    {% endif %}
+                    {% if current_user.skill5 in ['1'] %}                    
+                        <a href="">Software Development</a><br/>
+                    {% endif %}
+                    {% if current_user.skill6 in ['1'] %}                    
+                        <a href="">AI & Machine learning</a><br/>
+                    {% endif %}
+                    {% if current_user.skill7 in ['1'] %}                    
+                        <a href="">Project management</a><br/>
+                    {% endif %}
+                    {% if current_user.skill8 in ['1'] %}                    
+                        <a href="">Programming</a><br/>
+                    {% endif %}
+                    {% if current_user.skill9 in ['1'] %}                    
+                        <a href="">IT service management</a><br/>
+                    {% endif %}
+                    {% if current_user.skill10 in ['1'] %}                    
+                        <a href="">Virtualization</a><br/>
+                    {% endif %}
+                    
+                    
                 </div>
             </div>
             <div class="col-md-8">

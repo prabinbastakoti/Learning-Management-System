@@ -22,7 +22,20 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(30),nullable=False)
     university = db.Column(db.String(50),nullable=False)
     college = db.Column(db.String(50),nullable=True)
-    regnum = db.Column(db.String(20),nullable=True)
+    regnum = db.Column(db.String(20),unique=True,nullable=True)
+    faculty = db.Column(db.String(100),nullable=True)
+    semester = db.Column(db.String(100),nullable=True)
+    skill1 = db.Column(db.String(1000),nullable=True)
+    skill2 = db.Column(db.String(1000),nullable=True)
+    skill3 = db.Column(db.String(1000),nullable=True)
+    skill4 = db.Column(db.String(1000),nullable=True)
+    skill5 = db.Column(db.String(1000),nullable=True)
+    skill6 = db.Column(db.String(1000),nullable=True)
+    skill7 = db.Column(db.String(1000),nullable=True)
+    skill8 = db.Column(db.String(1000),nullable=True)
+    skill9 = db.Column(db.String(1000),nullable=True)
+    skill10 = db.Column(db.String(1000),nullable=True)
+
 
     posts = db.relationship('Post',backref='author',lazy=True)
 
