@@ -149,7 +149,7 @@
               {% endif %}
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3" id="goodpart">
               <label class="small mb-1" name="regnum"><h5>{{ form.regnum.label }}</h5></label>                            
               {% if form.regnum.errors %}
                 {{ form.regnum(class="form-control is-invalid") }}
@@ -163,7 +163,7 @@
               {% endif %}
             </div>                   
             
-            <div class="mb-3">
+            <div class="mb-3" id="skills">
               <label class="small mb-1" for="inputSkills"> <h5>Skills</h5></label>
               <div class="form-check">  
                 {{ form.skill1(class="form-check-input") }}

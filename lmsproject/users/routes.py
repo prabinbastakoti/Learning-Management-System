@@ -69,7 +69,7 @@ def delete_photo():
 
     db.session.commit()
     flash('Your Photo has been deleted!','success')
-    return redirect(url_for('users.editprofile'))
+    return redirect(url_for('users.profile'))
 
 
 

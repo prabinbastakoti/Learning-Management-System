@@ -64,36 +64,44 @@
                     <p>SKILLS</p>
                     
                     {% if current_user.skill1 in ['1'] %}                    
-                        <a href="">CyberSecurity</a><br/> 
+                        <a href="https://en.wikipedia.org/wiki/Computer_security">CyberSecurity</a><br/> 
                     {% endif %}
                     {% if current_user.skill2 in ['1'] %}                    
-                        <a href="">Cloud Computing</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Cloud_computing">Cloud Computing</a><br/>
                     {% endif %}
                     {% if current_user.skill3 in ['1'] %}                    
-                        <a href="">Data analytics and data science</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Data_science">Data analytics and data science</a><br/>
                     {% endif %}
                     {% if current_user.skill4 in ['1'] %}                    
-                        <a href="">Networking and wireless</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Computer_network">Networking and wireless</a><br/>
                     {% endif %}
                     {% if current_user.skill5 in ['1'] %}                    
-                        <a href="">Software Development</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Software_development">Software Development</a><br/>
                     {% endif %}
                     {% if current_user.skill6 in ['1'] %}                    
-                        <a href="">AI & Machine learning</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI & Machine learning</a><br/>
                     {% endif %}
                     {% if current_user.skill7 in ['1'] %}                    
-                        <a href="">Project management</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Project_management">Project management</a><br/>
                     {% endif %}
                     {% if current_user.skill8 in ['1'] %}                    
-                        <a href="">Programming</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Computer_programming">Programming</a><br/>
                     {% endif %}
                     {% if current_user.skill9 in ['1'] %}                    
-                        <a href="">IT service management</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/IT_service_management">IT service management</a><br/>
                     {% endif %}
                     {% if current_user.skill10 in ['1'] %}                    
-                        <a href="">Virtualization</a><br/>
+                        <a href="https://en.wikipedia.org/wiki/Virtualization">Virtualization</a><br/>
                     {% endif %}
-                    
+                    {% if current_user.skill1 in ['1'] or current_user.skill2 in ['1'] or current_user.skill3 in ['1'] or current_user.skill4 in ['1'] or current_user.skill5 in ['1'] or current_user.skill6 in ['1'] or current_user.skill7 in ['1'] or current_user.skill8 in ['1'] or current_user.skill9 in ['1'] or current_user.skill10 in ['1'] %}
+                        
+                    {% else %}
+                        <a href="{{ url_for('users.editprofile2') }}#goodpart">
+                            
+                                [ Edit Profile To Add Skills ]
+                            
+                        </a>
+                    {% endif %}
                     
                 </div>
             </div>
