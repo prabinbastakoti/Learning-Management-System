@@ -1,62 +1,66 @@
-{% extends "layout.html" %}
-
-{% block loginlogoutconditional %}
+{% extends "layout.html" %} {% block loginlogoutconditional %}
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  {% if current_user.is_authenticated %} 
-      <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-          <ul class="navbar-nav  ">
-              <li class="nav-item active">
-                  <div class="hero_btn-continer">
-                      <a href="{{ url_for('users.logout') }}" class="call_to-btn btn_white-border">
-                          Logout
-                      </a>
-                  </div>  
-              </li>
-          </ul>
-      </div>    
+  {% if current_user.is_authenticated %}
+  <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <div class="hero_btn-continer">
+          <a
+            href="{{ url_for('users.logout') }}"
+            class="call_to-btn btn_white-border"
+          >
+            Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
   {% else %}
-      <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-          <ul class="navbar-nav  ">
-              <li class="nav-item active">
-                  <div class="hero_btn-continer">
-                      <a href="{{ url_for('users.login') }}" class="call_to-btn btn_white-border">
-                          Login
-                      </a>
-                  </div>  
-              </li>
-          </ul>
-      </div>    
+  <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <div class="hero_btn-continer">
+          <a
+            href="{{ url_for('users.login') }}"
+            class="call_to-btn btn_white-border"
+          >
+            Login
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
   {% endif %}
 </div>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <section class="hero_section">
-  <div class="hero-container container ">
-   <div class="row">
-    <div class="hero_detail-box">
-      <h1>
-          Democratize
-          Data & Information
-      </h1>
+  <div class="hero-container container">
+    <div class="row">
+      <div class="hero_detail-box">
+        <h1>Democratize Data & Information</h1>
 
-      <div class="hero_btn-continer1">
-        <a href="{{ url_for('users.login') }}" class="call_to-btn btn_white-border">
-        Start Learning
-        </a>
+        <div class="hero_btn-continer1">
+          <a
+            href="{{ url_for('users.login') }}"
+            class="call_to-btn btn_white-border"
+          >
+            Start Learning
+          </a>
+        </div>
+      </div>
+      <div class="hero_img-container">
+        <div>
+          <img
+            src="{{ url_for('static',filename='images/free.webp') }}"
+            alt=""
+            class="img-fluid"
+          />
+        </div>
       </div>
     </div>
-    <div class="hero_img-container">
-      <div>
-          <img src="{{ url_for('static',filename='images/free.webp') }}" alt="" class="img-fluid">
-      </div>
-    </div>
-  
-  </div>
   </div>
 </section>
-
 
 <div id="portfolio" class="our-portfolio section">
   <div class="container">
@@ -64,33 +68,53 @@
       <div class="col-lg-3 col-sm-6">
         <div class="item wow bounceInUp">
           <div class="hidden-content">
-            <h4>Learn anytime, anywhere </h4>
+            <h4>Learn anytime, anywhere</h4>
             <p>Gets access to all our offline course materials.</p>
           </div>
           <div class="showed-content">
-            <img src="{{ url_for('static',filename='images/card1.png') }}" alt="">
+            <img
+              src="{{ url_for('static',filename='images/card1.png') }}"
+              alt=""
+            />
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div
+          class="item wow bounceInUp"
+          data-wow-duration="1s"
+          data-wow-delay="0.5s"
+        >
           <div class="hidden-content">
             <h4>Practice and revise</h4>
-            <p>With our Asessment section, MCQ and lecture notes shared as PDFs for your revision.</p>
+            <p>
+              With our Asessment section, MCQ and lecture notes shared as PDFs
+              for your revision.
+            </p>
           </div>
           <div class="showed-content">
-            <img src="{{ url_for('static',filename='images/card2.png') }}" alt="">
+            <img
+              src="{{ url_for('static',filename='images/card2.png') }}"
+              alt=""
+            />
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+        <div
+          class="item wow bounceInUp"
+          data-wow-duration="1s"
+          data-wow-delay="0.6s"
+        >
           <div class="hidden-content">
             <h4>Data Updated materials</h4>
             <p>End to End researched file and docs.</p>
           </div>
           <div class="showed-content">
-            <img src="{{ url_for('static',filename='images/card3.png') }}" alt="">
+            <img
+              src="{{ url_for('static',filename='images/card3.png') }}"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -98,31 +122,33 @@
   </div>
 </div>
 
-
-<section class="hero_section ">
+<section class="hero_section">
   <div class="hero-container container">
     <div class="hero_detail-box">
-      <h1>
-        Join Our
-        Community
-      </h1>
+      <h1>Join Our Community</h1>
       <p>
-        At Shikshyalaya, we believe every student<br>
-         has a right to information. We along with our<br>
-          other students want to create a network of<br>
-           communities for them so that one student can<br> help others. 
-
-
+        At Pathshala, we believe every student<br />
+        has a right to information. We along with our<br />
+        other students want to create a network of<br />
+        communities for them so that one student can<br />
+        help others.
       </p>
       <div class="hero_btn-continer1">
-        <a href="{{ url_for('posts.community') }}" class="call_to-btn btn_white-border">
+        <a
+          href="{{ url_for('posts.community') }}"
+          class="call_to-btn btn_white-border"
+        >
           Start Learning
         </a>
       </div>
     </div>
     <div class="hero_img-container">
       <div>
-        <img src="{{ url_for('static',filename='images/community.png') }}" alt="" class="img-fluid">
+        <img
+          src="{{ url_for('static',filename='images/community.png') }}"
+          alt=""
+          class="img-fluid"
+        />
       </div>
     </div>
   </div>

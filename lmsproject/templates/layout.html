@@ -1,189 +1,229 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+    {% if title %}
+    <title>{{ title }} - Pathshala</title>
+    {% else %}
+    <title>Pathshala</title>
+    {% endif %}
 
-  {% if title %}
-    <title>{{ title }} - ShikshyaLaya</title>
-  {% else %}
-    <title>ShikshyaLaya</title>
-  {% endif %}
+    <!-- bootstrap core css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='css/bootstrap.css') }}"
+    />
+    <!-- progress barstle -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}"
+    />
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font wesome stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+    <!-- Custom styles for this template -->
+    <link
+      href="{{ url_for('static',filename='css/style.css') }}"
+      rel="stylesheet"
+    />
+    <!-- responsive style -->
+    <link
+      href="{{ url_for('static',filename='css/responsive.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='vendor\font-awesome-4.7\css\font-awesome.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/templatemo-space-dynamic.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/animated.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/owl.css') }}"
+    />
 
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static',filename='images/graduation-cap.png') }}"
+    />
+  </head>
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css') }}" />
-  <!-- progress barstle -->
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
-  <!-- font wesome stylesheet -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <!-- Custom styles for this template -->
-  <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url_for('static',filename='vendor\font-awesome-4.7\css\font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/templatemo-space-dynamic.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/animated.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.css') }}">
+  <body>
+    <div class="top_container">
+      <!-- header section starts -->
+      <header class="header_section">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">
+              <img src="{{ url_for('static',filename='images/logo.png') }}" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
 
-<link rel="stylesheet" href="{{ url_for('static',filename='css/css-circular-prog-bar.css') }}">
-<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/graduation-cap.png') }}">
-
-</head>
-
-<body>
-  <div class="top_container">
-    <!-- header section starts -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{{ url_for('main.home') }}">           
-              <img src="{{ url_for('static',filename='images/logo.png') }}">         
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-        {% block loginlogoutconditional %}
+            {% block loginlogoutconditional %}
             <!-- Only for index.html for login and logout conditional -->
-        {% endblock %}
-
-        </nav>
-      </div>
-    </header>
-  </div>
-
-  {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-        <span>{{ message }}</span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-        {% block content %}
-        
-        {% endblock %}
-
-
-
-      <!-- end contact section -->
-      <section class="info_section layout_padding-top">
-        <div class="info_logo-box">
-          <h2>
-              SHIKSHYALAYA
-          </h2>
+            {% endblock %}
+          </nav>
         </div>
-          <div class="container layout_padding2">
-            <div class="row">
-              <div class="col-md-3">
-                <h5>
-                    About Us                                                                             
-                </h5>
-               <p>
-                  ShikshyaLaya is an online Platform trying to Democratize access to data & information every student needs.
-               </p>
-              </div>
-              <div class="col-md-3">
-                <h5>
-                    Useful Link 
-                </h5>
-                <ul>
-                  <li>
-                    <a href="#">
-                        Video games
-                    </a>
-                  </li>
-                  <li>
-                   <a href="#">
-                      Remote control
-                   </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                        3d controller
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h5>
-                    Contact Us
-                </h5>
-                <p>
-                +977-9842640050<br>
-                +977-9749459505<br>
-                Bharatpur, Chitwan, Nepal
-                </p>
-              </div>
-              <div class="col-md-3">
-           
-                <div class="subscribe_container">
-                  <h5>
-                      Newsletter
-                  </h5>
-                  <div class="form_container">
-                    <form method="POST">
-                      <input type="email"name="email" placeholder="Enter your email">
-                      <button type="submit" id="submit">
-                        Subscribe
-                      </button>
-                    </form>
-                  </div>
-                </div>
-                
+      </header>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div
+      class="alert alert-{{ category }} alert-dismissible fade show"
+      role="alert"
+    >
+      <span>{{ message }}</span>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
+
+    <!-- end contact section -->
+    <section class="info_section layout_padding-top">
+      <div class="info_logo-box">
+        <h2>PATHSHALA</h2>
+      </div>
+      <div class="container layout_padding2">
+        <div class="row">
+          <div class="col-md-3">
+            <h5>About Us</h5>
+            <p>
+              Pathshala is an online Platform trying to Democratize access to
+              data & information every student needs.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <h5>Useful Link</h5>
+            <ul>
+              <li>
+                <a href="#"> Video games </a>
+              </li>
+              <li>
+                <a href="#"> Remote control </a>
+              </li>
+              <li>
+                <a href="#"> 3d controller </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Contact Us</h5>
+            <p>
+              +977-9842640050<br />
+              Bharatpur, Chitwan, Nepal
+            </p>
+          </div>
+          <div class="col-md-3">
+            <div class="subscribe_container">
+              <h5>Newsletter</h5>
+              <div class="form_container">
+                <form method="POST">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                  />
+                  <button type="submit" id="submit">Subscribe</button>
+                </form>
               </div>
             </div>
           </div>
-          <div class="container">
-              <div class="social_container">
-                 
-                  <div class="social-box">
-                    <a href="https://www.facebook.com/ShikshyaLaya-102935545883000">
-                      <img src="{{ url_for('static',filename='images/fb.png') }}" alt="">
-                    </a>
-      
-                    <a href="https://twitter.com/shikshya_laya">
-                      <img src="{{ url_for('static',filename='images/twitter.png') }}" alt="">
-                    </a>
-                    <a href="https://www.linkedin.com/in/shikshya-laya-b1b11124b/">
-                      <img src="{{ url_for('static',filename='images/linkedin.png') }}" alt="">
-                    </a>
-                    <a href="https://www.instagram.com/shikshya.laya/">
-                      <img src="{{ url_for('static',filename='images/instagram.png') }}" alt="">
-                    </a>
-                  </div>
-                </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="social_container">
+          <div class="social-box">
+            <a href="https://www.facebook.com/ShikshyaLaya-102935545883000">
+              <img
+                src="{{ url_for('static',filename='images/fb.png') }}"
+                alt=""
+              />
+            </a>
+
+            <a href="https://twitter.com/shikshya_laya">
+              <img
+                src="{{ url_for('static',filename='images/twitter.png') }}"
+                alt=""
+              />
+            </a>
+            <a href="https://www.linkedin.com/in/shikshya-laya-b1b11124b/">
+              <img
+                src="{{ url_for('static',filename='images/linkedin.png') }}"
+                alt=""
+              />
+            </a>
+            <a href="https://www.instagram.com/shikshya.laya/">
+              <img
+                src="{{ url_for('static',filename='images/instagram.png') }}"
+                alt=""
+              />
+            </a>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-  <!-- footer section -->
-  <section class="container-fluid footer_section">
-    <p>
-      Copyright &copy; 2022 All Rights Reserved By ShikshyaLaya
-      
-    </p>
-  </section>
-  <!-- footer section -->
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+      <p>Copyright &copy; 2024 All Rights Reserved By Pathshala</p>
+    </section>
+    <!-- footer section -->
 
-  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.4.1.min.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
-
-</body>
-
+    <script
+      type="text/javascript"
+      src="{{ url_for('static',filename='js/jquery-3.4.1.min.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static',filename='js/bootstrap.js') }}"
+    ></script>
+  </body>
 </html>
