@@ -1,2 +1,2 @@
 # Learning-Management-System
-ShikshyaLaya 
+Pathshala
