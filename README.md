@@ -31,11 +31,25 @@ Clone down this repository. You will need `python` and `pip` installed globally 
 
 Installation:
 
-`npm install`   
+Install virtualenv:
+
+`pip install virtualenv`
+
+Create a new virtual environment:
+
+`virtualenv venv`
+
+Activate the virtual environment in powershell:
+
+`.\venv\Scripts\activate`
+
+Install Dependency Packages:
+
+`pip install -r requirements.txt`   
 
 To Start Server:
 
-`npm start`  
+`python run.py`  
   
 
 ## Reflection
