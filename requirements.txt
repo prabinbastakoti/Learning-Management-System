@@ -32,6 +32,7 @@ requests==2.28.1
 six==1.16.0
 soupsieve==2.3.2.post1
 SQLAlchemy==1.4.32
+python-dotenv==1.0.0
 urllib3==1.26.12
 virtualenv==20.13.4
 Werkzeug==2.0.0
